@@ -39,11 +39,12 @@ namespace EasyLOB.Persistence
 
         #region Methods
 
-        public UnitOfWorkNH(ISession session, IAuthenticationManager authenticationManager)
+        public UnitOfWorkNH(ISession session,
+            IAuthenticationManager authenticationManager)
         {
             Session = session;
-
             AuthenticationManager = authenticationManager;
+
             DatabaseLogger = ZDatabaseLogger.None;
             Domain = "";
             Repositories = new Dictionary<Type, object>();

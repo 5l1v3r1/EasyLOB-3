@@ -36,11 +36,12 @@ namespace EasyLOB.Persistence
 
         #region Methods
 
-        public UnitOfWorkMongoDB(string url, string databaseName, IAuthenticationManager authenticationManager)
+        public UnitOfWorkMongoDB(string url, string databaseName,
+            IAuthenticationManager authenticationManager)
         {
             Database = (new MongoClient(url)).GetDatabase(databaseName);
-
             AuthenticationManager = authenticationManager;
+
             DatabaseLogger = ZDatabaseLogger.None;
             Domain = "";
             Repositories = new Dictionary<Type, object>();

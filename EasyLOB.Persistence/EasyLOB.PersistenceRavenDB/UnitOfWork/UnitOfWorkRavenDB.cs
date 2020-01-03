@@ -50,15 +50,15 @@ namespace EasyLOB.Persistence
 
         #region Methods
 
-        public UnitOfWorkRavenDB(string url, string databaseName, IAuthenticationManager authenticationManager)
+        public UnitOfWorkRavenDB(string url, string databaseName,
+            IAuthenticationManager authenticationManager)
         {
-            AuthenticationManager = authenticationManager;
-
             DocumentStore = new DocumentStore
             {
                 Url = url,
                 DefaultDatabase = databaseName
             };
+            AuthenticationManager = authenticationManager;
 
             // Key = entity/1
             //DocumentStore.Conventions

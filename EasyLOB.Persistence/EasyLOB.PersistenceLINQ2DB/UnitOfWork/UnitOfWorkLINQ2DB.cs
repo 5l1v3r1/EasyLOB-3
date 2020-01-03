@@ -38,11 +38,12 @@ namespace EasyLOB.Persistence
 
         #region Methods
 
-        public UnitOfWorkLINQ2DB(DataConnection connection, IAuthenticationManager authenticationManager)
+        public UnitOfWorkLINQ2DB(DataConnection connection,
+            IAuthenticationManager authenticationManager)
         {
             Connection = connection;
-
             AuthenticationManager = authenticationManager;
+
             DatabaseLogger = ZDatabaseLogger.None;
             Domain = "";
             Repositories = new Dictionary<Type, object>();

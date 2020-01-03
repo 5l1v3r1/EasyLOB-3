@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\AttributeExtensions.cs" />
     <Compile Include="ZProfile\ZAttribute.cs" />
     <Compile Include="ZProfile\ZProfile.cs" />
     <Compile Include="Extensions\DataTableExtensions.cs" />

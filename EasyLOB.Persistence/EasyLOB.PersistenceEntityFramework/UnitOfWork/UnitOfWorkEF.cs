@@ -60,11 +60,12 @@ namespace EasyLOB.Persistence
 
         #region Methods
 
-        public UnitOfWorkEF(DbContext context, IAuthenticationManager authenticationManager)
+        public UnitOfWorkEF(DbContext context,
+            IAuthenticationManager authenticationManager)
         {
             Context = context;
-
             AuthenticationManager = authenticationManager;
+
             DatabaseLogger = ZDatabaseLogger.None;
             Domain = "";
             Repositories = new Dictionary<Type, object>();

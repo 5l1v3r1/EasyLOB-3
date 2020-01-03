@@ -11,11 +11,9 @@ namespace EasyLOB.Shell
 
             try
             {
-                ILogManager logManager = DIHelper.DIManager.GetService<ILogManager>();
-
-                logManager.Fatal("Fatal");
-                logManager.Fatal("Fatal {Parameter1} {Parameter2} {Parameter3}", new object[] { "ABC", 1.23, DateTime.Now });
-                logManager.Fatal("Fatal {Parameter1} {Parameter2} {Parameter3}", "ABC", 1.23, DateTime.Now);
+                DIHelper.LogManager.Fatal("Fatal");
+                DIHelper.LogManager.Fatal("Fatal {Parameter1} {Parameter2} {Parameter3}", new object[] { "ABC", 1.23, DateTime.Now });
+                DIHelper.LogManager.Fatal("Fatal {Parameter1} {Parameter2} {Parameter3}", "ABC", 1.23, DateTime.Now);
 
                 try
                 {
@@ -24,7 +22,7 @@ namespace EasyLOB.Shell
                 }
                 catch (Exception exception)
                 {
-                    logManager.Exception(exception, "ABC");
+                    DIHelper.LogManager.Exception(exception, "ABC");
                 }
 
                 try
@@ -41,7 +39,7 @@ namespace EasyLOB.Shell
                         + ProfileHelper.Profile.UserName;
                     string footer =
                         DateTime.Now.ToString();
-                    logManager.OperationResult(operationResult, header, footer);
+                    DIHelper.LogManager.OperationResult(operationResult, header, footer);
                 }
             }
             catch (Exception exception)

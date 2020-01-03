@@ -36,11 +36,12 @@ namespace EasyLOB.Persistence
 
         #region Methods
 
-        public UnitOfWorkOData(DataServiceContext container, IAuthenticationManager authenticationManager)
+        public UnitOfWorkOData(DataServiceContext container,
+            IAuthenticationManager authenticationManager)
         {
             Container = container;
-
             AuthenticationManager = authenticationManager;
+
             DatabaseLogger = ZDatabaseLogger.None;
             Domain = "";
             Repositories = new Dictionary<Type, object>();

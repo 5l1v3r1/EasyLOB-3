@@ -61,11 +61,12 @@ namespace EasyLOB.Persistence
 
         #region Methods
 
-        public UnitOfWorkRedis(string host, IAuthenticationManager authenticationManager)
+        public UnitOfWorkRedis(string host,
+            IAuthenticationManager authenticationManager)
         {
             Client = new RedisClient(host);
-
             AuthenticationManager = authenticationManager;
+
             DatabaseLogger = ZDatabaseLogger.None;
             Domain = "";
             Repositories = new Dictionary<Type, object>();
