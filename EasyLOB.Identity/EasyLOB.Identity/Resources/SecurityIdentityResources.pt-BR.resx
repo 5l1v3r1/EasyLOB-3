@@ -130,10 +130,10 @@
     <value>Operação autorizada apenas para usuários com função "{0}"</value>
   </data>
   <data name="Role" xml:space="preserve">
-    <value>Grupo</value>
+    <value>Função</value>
   </data>
   <data name="Roles" xml:space="preserve">
-    <value>Grupos</value>
+    <value>Funções</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Usuário</value>

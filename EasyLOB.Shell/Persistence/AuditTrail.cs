@@ -11,7 +11,7 @@ namespace EasyLOB.Shell
         {
             Console.WriteLine("\nPersistence AuditTrail Demo\n");
 
-            IAuditTrailUnitOfWork unitOfWork = DIHelper.DIManager.GetService<IAuditTrailUnitOfWork>();
+            IAuditTrailUnitOfWork unitOfWork = EasyLOBHelper.DIManager.GetService<IAuditTrailUnitOfWork>();
             Console.WriteLine(unitOfWork.GetType().FullName + " with " + unitOfWork.DBMS.ToString() + "\n");
 
             PersistenceAuditTrailData<AuditTrailConfiguration>(unitOfWork);

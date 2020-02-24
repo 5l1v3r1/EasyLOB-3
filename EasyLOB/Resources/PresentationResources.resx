@@ -276,9 +276,6 @@
   <data name="Export" xml:space="preserve">
     <value>Exportar</value>
   </data>
-  <data name="TaskStatus" xml:space="preserve">
-    <value>Status</value>
-  </data>
   <data name="Copy" xml:space="preserve">
     <value>Copiar</value>
   </data>

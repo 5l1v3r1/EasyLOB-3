@@ -60,7 +60,7 @@ namespace EasyLOB
             IMapper mapper = AppHelper.SetupMappers();
             AppHelper.SetupProfiles();
 
-            DIHelper.Setup(new DIManagerUnity(container), mapper);
+            EasyLOBHelper.Setup(new DIManagerUnity(container), mapper);
         }
 
         #endregion Methods

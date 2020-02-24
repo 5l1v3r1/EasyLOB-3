@@ -29,7 +29,7 @@ namespace EasyLOB.Environment
         {
             get
             {
-                AppProfile profile = (AppProfile)DIHelper.EnvironmentManager.SessionRead(_sessionName);
+                AppProfile profile = (AppProfile)EasyLOBHelper.GetService<IEnvironmentManager>().SessionRead(_sessionName);
 
                 return profile ?? new AppProfile();
             }
@@ -46,7 +46,9 @@ namespace EasyLOB.Environment
         /// <param name="auditTrailunitOfWork">Authorization manager</param>
         public static void Login(IAuthenticationManager authenticationManager, IAuditTrailUnitOfWork auditTrailunitOfWork)
         {
-            AppProfile profile = (AppProfile)DIHelper.EnvironmentManager.SessionRead(_sessionName);
+            IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
+
+            AppProfile profile = (AppProfile)environmentManager.SessionRead(_sessionName);
             if (profile == null || String.IsNullOrEmpty(profile.UserName))
             {
                 // User
@@ -71,7 +73,7 @@ namespace EasyLOB.Environment
                     profile.AuditTrail.Add(auditTrail);
                 }
 
-                DIHelper.EnvironmentManager.SessionWrite(_sessionName, profile);
+                environmentManager.SessionWrite(_sessionName, profile);
             }
         }
 

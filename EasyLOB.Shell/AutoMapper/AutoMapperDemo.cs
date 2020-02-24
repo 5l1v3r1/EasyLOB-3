@@ -50,7 +50,7 @@ namespace EasyLOB.Shell
 
                         using (StreamWriter stream = new StreamWriter(filePath))
                         {
-                            TypeMap[] typeMaps = DIHelper.Mapper.ConfigurationProvider.GetAllTypeMaps();
+                            TypeMap[] typeMaps = EasyLOBHelper.Mapper.ConfigurationProvider.GetAllTypeMaps();
                             foreach (TypeMap typeMap in typeMaps)
                             {
                                 stream.WriteLine("{0} -> {1}", typeMap.SourceType.ToString(), typeMap.DestinationType.ToString());

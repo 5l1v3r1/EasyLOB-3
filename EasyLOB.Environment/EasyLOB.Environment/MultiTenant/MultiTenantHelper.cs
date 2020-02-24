@@ -42,12 +42,7 @@ namespace EasyLOB.Environment
         /// </summary>
         public static AppTenant Tenant
         {
-            get
-            {
-                string tenantName = DIHelper.EnvironmentManager.WebSubDomain;
-
-                return GetTenant(String.IsNullOrEmpty(tenantName) ? TenantName : tenantName);
-            }
+            get { return GetTenant(TenantName); }
         }
 
         private static string _tenantName = "";
@@ -61,7 +56,7 @@ namespace EasyLOB.Environment
             {
                 if (String.IsNullOrEmpty(_tenantName))
                 {
-                    _tenantName = DIHelper.EnvironmentManager.WebSubDomain;
+                    _tenantName = EasyLOBHelper.GetService<IEnvironmentManager>().WebSubDomain;
                 }
 
                 return _tenantName;
@@ -75,12 +70,14 @@ namespace EasyLOB.Environment
         {
             get
             {
-                List<AppTenant> tenants = (List<AppTenant>)DIHelper.EnvironmentManager.SessionRead(_sessionName);
+                IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
+
+                List<AppTenant> tenants = (List<AppTenant>)environmentManager.SessionRead(_sessionName);
                 if (tenants == null || tenants.Count == 0)
                 {
                     try
                     {
-                        string filePath = Path.Combine(DIHelper.EnvironmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
+                        string filePath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                             "JSON/MultiTenant.json");
                         string json = File.ReadAllText(filePath);
                         tenants = JsonConvert.DeserializeObject<List<AppTenant>>(json);
@@ -88,7 +85,7 @@ namespace EasyLOB.Environment
                     catch { }
                     tenants = tenants ?? new List<AppTenant>();
 
-                    DIHelper.EnvironmentManager.SessionWrite(_sessionName, tenants);
+                    environmentManager.SessionWrite(_sessionName, tenants);
                 }
 
                 return tenants;

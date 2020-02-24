@@ -57,7 +57,7 @@
     <Compile Include="Interfaces\Extensions\IIniManager.cs" />
     <Compile Include="Interfaces\Extensions\IMailManager.cs" />
     <Compile Include="Interfaces\Presentation\IZViewBaseDTO.cs" />
-    <Compile Include="DI\DIHelper.cs" />
+    <Compile Include="EasyLOBHelper.cs" />
     <Compile Include="Interfaces\Application\IEasyLOBApplication.cs" />
     <Compile Include="Interfaces\Data\IZProfile.cs" />
     <Compile Include="Interfaces\Data\IZValidatableObject.cs" />
@@ -104,7 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SyncfusionPatternResources.pt-BR.resx</DependentUpon>
     </Compile>
-    <Compile Include="Types.cs" />
+    <Compile Include="Types\Types.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ErrorResources.Designer.cs">
       <AutoGen>True</AutoGen>

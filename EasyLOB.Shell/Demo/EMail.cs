@@ -10,7 +10,7 @@ namespace EasyLOB.Shell
 
             try
             {
-                IMailManager mailManager = DIHelper.DIManager.GetService<IMailManager>();
+                IMailManager mailManager = EasyLOBHelper.DIManager.GetService<IMailManager>();
 
                 mailManager.Mail("siegmar@siegmar.com.br", "Subject", "<b>Body</b>", true);
             }

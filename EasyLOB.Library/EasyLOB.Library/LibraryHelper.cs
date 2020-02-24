@@ -1,4 +1,5 @@
 ﻿using EasyLOB.Resources;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -1505,6 +1506,30 @@ namespace EasyLOB.Library
         }
 
         #endregion Methods IO
+
+        #region Methods JSON
+
+        public static string ToJson(object o, bool indented = false)
+        {
+            string result = "";
+
+            if (o != null)
+            {
+                if (indented)
+                {
+                    result = JsonConvert.SerializeObject(o, Formatting.Indented);
+                }
+                else
+                {
+                    result = JsonConvert.SerializeObject(o, Formatting.None);
+                }
+
+            }
+
+            return result == "\"\"" ? "" : result;
+        }
+
+        #endregion Methods JSON
 
         #region Methods Math
 

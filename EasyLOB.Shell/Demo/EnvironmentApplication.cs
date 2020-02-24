@@ -10,14 +10,16 @@ namespace EasyLOB.Shell
 
             string path = ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration");
 
+            IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
+
             Console.WriteLine("\nApplication Demo");
-            Console.WriteLine("\nApplicationDirectory: {0}", DIHelper.EnvironmentManager.ApplicationDirectory);
-            Console.WriteLine("WebDirectory(path): {0}", DIHelper.EnvironmentManager.ApplicationPath(path));
-            Console.WriteLine("IsWeb: {0}", DIHelper.EnvironmentManager.IsWeb.ToString());
-            Console.WriteLine("WebUrl: {0}", DIHelper.EnvironmentManager.WebUrl);
-            Console.WriteLine("WebPath: {0}", DIHelper.EnvironmentManager.WebPath);
-            Console.WriteLine("WebDomain: {0}", DIHelper.EnvironmentManager.WebDomain);
-            Console.WriteLine("WebSubDomain: {0}", DIHelper.EnvironmentManager.WebSubDomain);
+            Console.WriteLine("\nApplicationDirectory: {0}", environmentManager.ApplicationDirectory);
+            Console.WriteLine("WebDirectory(path): {0}", environmentManager.ApplicationPath(path));
+            Console.WriteLine("IsWeb: {0}", environmentManager.IsWeb.ToString());
+            Console.WriteLine("WebUrl: {0}", environmentManager.WebUrl);
+            Console.WriteLine("WebPath: {0}", environmentManager.WebPath);
+            Console.WriteLine("WebDomain: {0}", environmentManager.WebDomain);
+            Console.WriteLine("WebSubDomain: {0}", environmentManager.WebSubDomain);
         }
     }
 }

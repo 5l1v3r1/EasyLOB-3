@@ -19,7 +19,7 @@ namespace EasyLOB.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class PatternResources {
@@ -79,7 +79,7 @@ namespace EasyLOB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:MM/dd/yyyy HH:mm:ss.fff}.
+        ///   Looks up a localized string similar to {0:MM/dd/yyyy HH:mm:ss}.
         /// </summary>
         public static string DataFormat_DateTime {
             get {
@@ -88,7 +88,7 @@ namespace EasyLOB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:MM/dd/yy HH:mm:ss.fff}.
+        ///   Looks up a localized string similar to {0:MM/dd/yy HH:mm}.
         /// </summary>
         public static string DataFormat_DateTime2 {
             get {
@@ -124,11 +124,20 @@ namespace EasyLOB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:HH:mm:ss.fff}.
+        ///   Looks up a localized string similar to {0:HH:mm:ss}.
         /// </summary>
         public static string DataFormat_Time {
             get {
                 return ResourceManager.GetString("DataFormat_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:HH:mm}.
+        /// </summary>
+        public static string DataFormat_Time2 {
+            get {
+                return ResourceManager.GetString("DataFormat_Time2", resourceCulture);
             }
         }
         
@@ -142,11 +151,29 @@ namespace EasyLOB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MM/dd/yy.
+        /// </summary>
+        public static string Format_Date2 {
+            get {
+                return ResourceManager.GetString("Format_Date2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MM/dd/yyyy HH:mm:ss.
         /// </summary>
         public static string Format_DateTime {
             get {
                 return ResourceManager.GetString("Format_DateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MM/dd/yy HH:mm.
+        /// </summary>
+        public static string Format_DateTime2 {
+            get {
+                return ResourceManager.GetString("Format_DateTime2", resourceCulture);
             }
         }
         
@@ -187,47 +214,11 @@ namespace EasyLOB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:MM/dd/yyyy}.
+        ///   Looks up a localized string similar to hh:mm.
         /// </summary>
-        public static string GridFormat_Date {
+        public static string Format_Time2 {
             get {
-                return ResourceManager.GetString("GridFormat_Date", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:MM/dd/yyyy HH:mm:ss}.
-        /// </summary>
-        public static string GridFormat_DateTime {
-            get {
-                return ResourceManager.GetString("GridFormat_DateTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:n2}.
-        /// </summary>
-        public static string GridFormat_Float {
-            get {
-                return ResourceManager.GetString("GridFormat_Float", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:d}.
-        /// </summary>
-        public static string GridFormat_Integer {
-            get {
-                return ResourceManager.GetString("GridFormat_Integer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:HH:mm:ss}.
-        /// </summary>
-        public static string GridFormat_Time {
-            get {
-                return ResourceManager.GetString("GridFormat_Time", resourceCulture);
+                return ResourceManager.GetString("Format_Time2", resourceCulture);
             }
         }
         

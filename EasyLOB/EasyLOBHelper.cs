@@ -3,9 +3,9 @@
 namespace EasyLOB
 {
     /// <summary>
-    /// DI Helper.
+    /// EasyLOB Helper.
     /// </summary>
-    public static class DIHelper
+    public static class EasyLOBHelper
     {
         #region Properties
 
@@ -18,16 +18,6 @@ namespace EasyLOB
         /// AutoMapper Mapper.
         /// </summary>
         public static IMapper Mapper { get; private set; }
-
-        /// <summary>
-        /// Environment manager.
-        /// </summary>
-        public static IEnvironmentManager EnvironmentManager { get; private set; }
-
-        /// <summary>
-        /// Log manager.
-        /// </summary>
-        public static ILogManager LogManager { get; private set; }
 
         #endregion Properties
 
@@ -43,9 +33,11 @@ namespace EasyLOB
         {
             DIManager = diManager;
             Mapper = mapper;
+        }
 
-            EnvironmentManager = diManager.GetService<IEnvironmentManager>();
-            LogManager = diManager.GetService<ILogManager>();
+        public static T GetService<T>()
+        {
+            return DIManager.GetService<T>();
         }
 
         #endregion Methods

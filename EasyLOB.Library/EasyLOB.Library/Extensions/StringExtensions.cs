@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,6 +37,30 @@ namespace EasyLOB.Library
         }
 
         #endregion Base64
+
+        #region JSON
+
+        public static string ToJson(this string s, bool indented = false)
+        {
+            string result = "";
+
+            if (!string.IsNullOrEmpty(s))
+            {
+                if (indented)
+                {
+                    result = JValue.Parse(s).ToString(Formatting.Indented);
+                }
+                else
+                {
+                    result = JValue.Parse(s).ToString(Formatting.None);
+                }
+
+            }
+
+            return result == "\"\"" ? "" : result;
+        }
+
+        #endregion JSON
 
         #region String
 

@@ -19,13 +19,15 @@ namespace EasyLOB.Environment
 
         #region Methods
 
-        public AppMenu(int id, string text, int? parentId, string url)
-        {
-            Id = id;
-            Text = text;
-            ParentId = parentId;
-            Url = (String.IsNullOrEmpty(url) ? "" : DIHelper.EnvironmentManager.WebPath + "/" + url).Replace("//", "/"); // Url.Content()
-        }
+        //public AppMenu(string id, string text, string parentId, string url)
+        //{
+        //    string webPath = EasyLOBHelper.GetService<IEnvironmentManager>().WebPath;
+
+        //    Id = id;
+        //    Text = text;
+        //    ParentId = parentId;
+        //    Url = (string.IsNullOrEmpty(url) ? "" : webPath + (url[0] == '/' ? "" : "/") + url);
+        //}
 
         #endregion Methods
     }

@@ -28,7 +28,7 @@ namespace EasyLOB
             IMapper mapper = AppHelper.SetupMappers();
             AppHelper.SetupProfiles();
 
-            DIHelper.Setup(new DIManagerAutofac(container), mapper);
+            EasyLOBHelper.Setup(new DIManagerAutofac(container), mapper);
         }
 
         #endregion Methods

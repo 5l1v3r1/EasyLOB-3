@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace EasyLOB.Environment
 {
-    public static class ResourcesHelper
+    public static class EnvironmentHelper
     {
         #region Properties
 
@@ -24,27 +24,29 @@ namespace EasyLOB.Environment
 
         #region Methods
 
-        static ResourcesHelper()
+        static EnvironmentHelper()
         {
+            IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
             string iniPath;
 
-            iniPath = Path.Combine(DIHelper.EnvironmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
+            iniPath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                 "INI/DashboardResources.ini");
-            IniManagerDashboard = DIHelper.DIManager.GetService<IIniManager>();
+            IniManagerDashboard = EasyLOBHelper.DIManager.GetService<IIniManager>();
             IniManagerDashboard.Load(iniPath);
 
-            iniPath = Path.Combine(DIHelper.EnvironmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
+            iniPath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                 "INI/MenuResources.ini");
-            IniManagerMenu = DIHelper.DIManager.GetService<IIniManager>();
+            IniManagerMenu = EasyLOBHelper.DIManager.GetService<IIniManager>();
             IniManagerMenu.Load(iniPath);
 
-            iniPath = Path.Combine(DIHelper.EnvironmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
+            iniPath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                 "INI/ReportResources.ini");
-            IniManagerReport = DIHelper.DIManager.GetService<IIniManager>();
+            IniManagerReport = EasyLOBHelper.DIManager.GetService<IIniManager>();
             IniManagerReport.Load(iniPath);
 
             Namespaces = new List<string>()
             {
+                "EasyLOB.Resources",
                 "EasyLOB.Activity.Resources",
                 "EasyLOB.Activity.Data.Resources",
                 "EasyLOB.AuditTrail.Resources",
@@ -52,10 +54,7 @@ namespace EasyLOB.Environment
                 "EasyLOB.Extensions.Edm.Resources",
                 "EasyLOB.Identity.Resources",
                 "EasyLOB.Identity.Data.Resources",
-                "EasyLOB.Library.Resources",
-                "EasyLOB.Library.Syncfusion.Resources",
                 "EasyLOB.Log.Resources",
-                "EasyLOB.Resources",
                 "EasyLOB.Security.Resources"
             };
 

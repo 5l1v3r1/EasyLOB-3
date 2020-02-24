@@ -646,15 +646,6 @@ namespace EasyLOB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status.
-        /// </summary>
-        public static string TaskStatus {
-            get {
-                return ResourceManager.GetString("TaskStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Unlock.
         /// </summary>
         public static string Unlock {

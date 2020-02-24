@@ -12,7 +12,7 @@ namespace EasyLOB.Shell
         {
             Console.WriteLine("\nPersistence Activity Demo\n");
 
-            IActivityUnitOfWork unitOfWork = DIHelper.DIManager.GetService<IActivityUnitOfWork>();
+            IActivityUnitOfWork unitOfWork = EasyLOBHelper.DIManager.GetService<IActivityUnitOfWork>();
             Console.WriteLine(unitOfWork.GetType().FullName + " with " + unitOfWork.DBMS.ToString() + "\n");
 
             PersistenceActivityData<EasyLOB.Activity.Data.Activity>(unitOfWork);

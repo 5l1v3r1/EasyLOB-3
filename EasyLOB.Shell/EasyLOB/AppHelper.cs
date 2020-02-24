@@ -34,11 +34,13 @@ namespace EasyLOB
         {
             if (!operationResult.Ok)
             {
+                ILogManager logManager = EasyLOBHelper.GetService<ILogManager>(); ;
+
                 string header =
                     url + System.Environment.NewLine
                     + MultiTenantHelper.Tenant.Name + System.Environment.NewLine
                     + ProfileHelper.Profile.UserName;
-                DIHelper.LogManager.OperationResult(operationResult, header);
+                logManager.OperationResult(operationResult, header);
             }
         }
 

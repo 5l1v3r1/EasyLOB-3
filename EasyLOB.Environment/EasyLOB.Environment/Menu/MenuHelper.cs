@@ -32,7 +32,9 @@ namespace EasyLOB.Environment
         /// <returns></returns>
         public static List<AppMenu> Menu(IAuthenticationManager authenticationManager)
         {
-            List<AppMenu> menu = (List<AppMenu>)DIHelper.EnvironmentManager.SessionRead(_sessionName);
+            IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
+
+            List<AppMenu> menu = (List<AppMenu>)environmentManager.SessionRead(_sessionName);
             if (menu == null || menu.Count == 0)
             {
                 menu = new List<AppMenu>();
@@ -42,12 +44,14 @@ namespace EasyLOB.Environment
                     List<AppMenuJson> menuJson = new List<AppMenuJson>();
                     string tenantName = MultiTenantHelper.Tenant.Name;
                     // Menu.TenantName.json
-                    string filePath = Path.Combine(DIHelper.EnvironmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
+                    string filePath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                         "JSON/Menu" + "." + tenantName + ".json");
                     string json = File.ReadAllText(filePath);
                     menuJson = JsonConvert.DeserializeObject<List<AppMenuJson>>(json);
 
-                    Parse(menu, menuJson, null, authenticationManager.IsAdministrator, authenticationManager.Roles);
+                    Parse(menu, menuJson, null,
+                        authenticationManager.IsAdministrator, authenticationManager.Roles,
+                        environmentManager);
 
                     foreach (AppMenu appMenu in menu)
                     {
@@ -59,19 +63,19 @@ namespace EasyLOB.Environment
                                 switch (words[0])
                                 {
                                     case "DashboardResources":
-                                        appMenu.Text = ResourcesHelper.GetDashboardResource(words[1]);
+                                        appMenu.Text = EnvironmentHelper.GetDashboardResource(words[1]);
                                         break;
 
                                     case "MenuResources":
-                                        appMenu.Text = ResourcesHelper.GetMenuResource(words[1]);
+                                        appMenu.Text = EnvironmentHelper.GetMenuResource(words[1]);
                                         break;
 
                                     case "ReportResources":
-                                        appMenu.Text = ResourcesHelper.GetReportResource(words[1]);
+                                        appMenu.Text = EnvironmentHelper.GetReportResource(words[1]);
                                         break;
 
                                     default:
-                                        appMenu.Text = ResourcesHelper.GetResource(words[0], words[1]);
+                                        appMenu.Text = EnvironmentHelper.GetResource(words[0], words[1]);
                                         break;
                                 }
                             }
@@ -79,7 +83,7 @@ namespace EasyLOB.Environment
                     }
                 }
 
-                DIHelper.EnvironmentManager.SessionWrite(_sessionName, menu);
+                environmentManager.SessionWrite(_sessionName, menu);
             }
 
             return menu;
@@ -94,7 +98,8 @@ namespace EasyLOB.Environment
         /// <param name="isAdministrator"></param>
         /// <param name="roles"></param>
         private static void Parse(List<AppMenu> menu, List<AppMenuJson> menuJson, int? parentId,
-            bool isAdministrator, List<string> roles)
+            bool isAdministrator, List<string> roles,
+            IEnvironmentManager environmentManager)
         {
             if (menuJson != null)
             {
@@ -127,8 +132,21 @@ namespace EasyLOB.Environment
                     if (authorized)
                     {
                         id++;
-                        menu.Add(new AppMenu(id, appMenuJson.Text, parentId, appMenuJson.Url));
-                        Parse(menu, appMenuJson.SubMenus, id, isAdministrator, roles);
+                        string webPath = environmentManager.WebPath;
+                        string url = appMenuJson.Url;
+                        AppMenu appMenu = new AppMenu()
+                        {
+                            Id = id,
+                            Text = appMenuJson.Text,
+                            ParentId = parentId == null ? null : parentId,
+                            Url = appMenuJson.Url == null ? null :
+                                (string.IsNullOrEmpty(url) ? "" : webPath + (url[0] == '/' ? "" : "/") + url)
+                        };
+                        menu.Add(appMenu);
+
+                        Parse(menu, appMenuJson.SubMenus, id,
+                            isAdministrator, roles,
+                            environmentManager);
                     }
                 }
             }
