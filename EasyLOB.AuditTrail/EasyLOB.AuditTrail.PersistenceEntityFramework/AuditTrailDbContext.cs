@@ -14,7 +14,7 @@ namespace EasyLOB.AuditTrail.Persistence
 
         public DbSet<AuditTrailLog> AuditTrailLogs { get; set; }
 
-        #endregion
+        #endregion Properties
         
         #region Methods
         
@@ -74,6 +74,6 @@ namespace EasyLOB.AuditTrail.Persistence
             modelBuilder.Configurations.Add(new AuditTrailLogConfiguration());
         }
         
-        #endregion
+        #endregion Methods
     }
 }
