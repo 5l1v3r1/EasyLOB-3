@@ -66,7 +66,7 @@ namespace EasyLOB.Persistence
 
             Filter(ref where, ref args);
 
-            if (!String.IsNullOrEmpty(where))
+            if (!string.IsNullOrEmpty(where))
             {
                 if (args != null)
                 {
@@ -371,7 +371,7 @@ namespace EasyLOB.Persistence
 
             Filter(ref where, ref args);
 
-            if (!String.IsNullOrEmpty(where))
+            if (!string.IsNullOrEmpty(where))
             {
                 if (args != null)
                 {
@@ -388,11 +388,11 @@ namespace EasyLOB.Persistence
             //    orderBy = null;
             //}
 
-            if (skip != null && String.IsNullOrEmpty(orderBy))
+            if (skip != null && string.IsNullOrEmpty(orderBy))
             {
                 query = query.OrderBy(Profile.LINQOrderBy);
             }
-            else if (!String.IsNullOrEmpty(orderBy))
+            else if (!string.IsNullOrEmpty(orderBy))
             {
                 query = query.OrderBy(orderBy);
             }

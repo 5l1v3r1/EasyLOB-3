@@ -48,19 +48,19 @@ namespace EasyLOB.Extensions.Mail
             subject = subject ?? "";
             body = body ?? "";
 
-            if (String.IsNullOrEmpty(toAddress))
+            if (string.IsNullOrEmpty(toAddress))
             {
-                throw new Exception(String.Format(ErrorResources.EMailInvalidTo, toAddress));
+                throw new Exception(string.Format(ErrorResources.EMailInvalidTo, toAddress));
             }
 
             string fromName = null;
-            if (!String.IsNullOrEmpty(FromName))
+            if (!string.IsNullOrEmpty(FromName))
             {
                 fromName = FromName;
             }
 
             string fromAddress;
-            if (!String.IsNullOrEmpty(FromAddress))
+            if (!string.IsNullOrEmpty(FromAddress))
             {
                 fromAddress = FromAddress;
             }
@@ -68,9 +68,9 @@ namespace EasyLOB.Extensions.Mail
             {
                 fromAddress = ConfigurationHelper.AppSettings<string>("EasyLOB.Mail.FromAddress");
             }
-            if (String.IsNullOrEmpty(fromAddress))
+            if (string.IsNullOrEmpty(fromAddress))
             {
-                throw new Exception(String.Format(ErrorResources.EMailInvalidFrom, fromAddress));
+                throw new Exception(string.Format(ErrorResources.EMailInvalidFrom, fromAddress));
             }
 
             MimeMessage message = new MimeMessage();
@@ -146,14 +146,14 @@ namespace EasyLOB.Extensions.Mail
             userName = userName ?? "";
             password = password ?? "";
 
-            if (!String.IsNullOrEmpty(UserName))
+            if (!string.IsNullOrEmpty(UserName))
             {
                 userName = UserName;
                 password = Password;
             }
 
             string toAddress = ConfigurationHelper.AppSettings<string>("EasyLOB.Mail.ToAddress");
-            if (!String.IsNullOrEmpty(toAddress))
+            if (!string.IsNullOrEmpty(toAddress))
             {
                 message.To.Clear();
                 message.To.Add(new MailboxAddress(toAddress));

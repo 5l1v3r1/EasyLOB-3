@@ -33,8 +33,8 @@ namespace EasyLOB.Environment
             string imageClass,
             string imageTitle)
         {
-            //string tag = String.Format("<a id=\"{0}\" data-ajax=\"true\" data-ajax-mode=\"replace\" data-ajax-update=\"#{1}\" href=\"{2}\"><img alt=\"{4}\" class=\"{3}\" title=\"{4}\" /></a>",
-            string tag = String.Format("<a id=\"{0}\" data-ajax=\"true\" data-ajax-mode=\"replace\" data-ajax-update=\"#{1}\" data-ajax-complete=\"zAjaxLoadComplete\" href=\"{2}\"><img class=\"{3}\" title=\"{4}\" /></a>",
+            //string tag = string.Format("<a id=\"{0}\" data-ajax=\"true\" data-ajax-mode=\"replace\" data-ajax-update=\"#{1}\" href=\"{2}\"><img alt=\"{4}\" class=\"{3}\" title=\"{4}\" /></a>",
+            string tag = string.Format("<a id=\"{0}\" data-ajax=\"true\" data-ajax-mode=\"replace\" data-ajax-update=\"#{1}\" data-ajax-complete=\"zAjaxLoadComplete\" href=\"{2}\"><img class=\"{3}\" title=\"{4}\" /></a>",
                 id,
                 updateTargetId,
                 uri,
@@ -52,7 +52,7 @@ namespace EasyLOB.Environment
             string imageTitle,
             string onComplete)
         {
-            string tag = String.Format("<a id=\"{0}\" data-ajax=\"true\" data-ajax-mode=\"replace\" data-ajax-update=\"#{1}\" data-ajax-complete=\"{5}\" href=\"{2}\"><img class=\"{3}\" title=\"{4}\" /></a>",
+            string tag = string.Format("<a id=\"{0}\" data-ajax=\"true\" data-ajax-mode=\"replace\" data-ajax-update=\"#{1}\" data-ajax-complete=\"{5}\" href=\"{2}\"><img class=\"{3}\" title=\"{4}\" /></a>",
                 id,
                 updateTargetId,
                 uri,

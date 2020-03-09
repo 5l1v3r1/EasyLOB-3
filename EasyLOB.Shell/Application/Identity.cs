@@ -34,7 +34,7 @@ namespace EasyLOB.Shell
             where TEntity : ZDataBase
         {
             IIdentityGenericApplication<TEntity> application =
-                EasyLOBHelper.DIManager.GetService<IIdentityGenericApplication<TEntity>>();
+                EasyLOBHelper.GetService<IIdentityGenericApplication<TEntity>>();
             ZOperationResult operationResult = new ZOperationResult();
             IEnumerable<TEntity> enumerable = application.SearchAll(operationResult);
             Console.WriteLine(typeof(TEntity).Name + ": {0}", enumerable.Count());
@@ -45,7 +45,7 @@ namespace EasyLOB.Shell
             where TEntity : ZDataBase
         {
             IIdentityGenericApplicationDTO<TEntityDTO, TEntity> application =
-                EasyLOBHelper.DIManager.GetService<IIdentityGenericApplicationDTO<TEntityDTO, TEntity>>();
+                EasyLOBHelper.GetService<IIdentityGenericApplicationDTO<TEntityDTO, TEntity>>();
             ZOperationResult operationResult = new ZOperationResult();
             IEnumerable<TEntityDTO> enumerable = application.SearchAll(operationResult);
             Console.WriteLine(typeof(TEntity).Name + "DTO: {0}", enumerable.Count());

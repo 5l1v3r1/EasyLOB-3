@@ -108,7 +108,7 @@ namespace EasyLOB.Environment
                 {
                     bool authorized = true;
 
-                    if (!isAdministrator && !String.IsNullOrEmpty(appMenuJson.Roles))
+                    if (!isAdministrator && !string.IsNullOrEmpty(appMenuJson.Roles))
                     {
                         if (appMenuJson.Roles == "*")
                         {

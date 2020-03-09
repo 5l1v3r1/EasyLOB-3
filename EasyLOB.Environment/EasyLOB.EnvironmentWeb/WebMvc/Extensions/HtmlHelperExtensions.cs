@@ -13,7 +13,7 @@ namespace EasyLOB.Environment
             string name,
             string id)
         {
-            string tag = String.Format("<input id=\"{0}\" name=\"{1}\" type=\"hidden\" value=\"{2}\">",
+            string tag = string.Format("<input id=\"{0}\" name=\"{1}\" type=\"hidden\" value=\"{2}\">",
                 id,
                 name,
                 value);
@@ -43,8 +43,8 @@ namespace EasyLOB.Environment
             string imageTitle,
             string onClick)
         {
-            //string tag = String.Format("<img id=\"{0}\" alt=\"{2}\" class=\"{1}\" title=\"{2}\" onclick=\"{3}\">",
-            string tag = String.Format("<img id=\"{0}\" class=\"{1}\" title=\"{2}\" onclick=\"{3}\">",
+            //string tag = string.Format("<img id=\"{0}\" alt=\"{2}\" class=\"{1}\" title=\"{2}\" onclick=\"{3}\">",
+            string tag = string.Format("<img id=\"{0}\" class=\"{1}\" title=\"{2}\" onclick=\"{3}\">",
                 id,
                 imageClass,
                 imageTitle,
@@ -58,8 +58,8 @@ namespace EasyLOB.Environment
             string imageClass,
             string imageTitle)
         {
-            //string tag = String.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"image\">",
-            string tag = String.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"submit\">",
+            //string tag = string.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"image\">",
+            string tag = string.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"submit\">",
                 id,
                 imageClass,
                 imageTitle);
@@ -73,14 +73,14 @@ namespace EasyLOB.Environment
             string imageTitle,
             string onClick)
         {
-            if (String.IsNullOrEmpty(onClick))
+            if (string.IsNullOrEmpty(onClick))
             {
                 return ZImageInput(htmlHelper, id, imageClass, imageTitle);
             }
             else
             {
-                //string tag = String.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"image\" onclick=\"{3}\">",
-                string tag = String.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"submit\" onclick=\"{3}\">",
+                //string tag = string.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"image\" onclick=\"{3}\">",
+                string tag = string.Format("<input id=\"{0}\" class=\"{1}\" title=\"{2}\" type=\"submit\" onclick=\"{3}\">",
                     id,
                     imageClass,
                     imageTitle,
@@ -96,8 +96,8 @@ namespace EasyLOB.Environment
             string imageTitle,
             string uri)
         {
-            //string tag = String.Format("<a id=\"{0}\" href=\"{1}\"><img alt=\"{3}\" class=\"{2}\" title=\"{3}\"></a>",
-            string tag = String.Format("<a id=\"{0}\" href=\"{1}\"><img class=\"{2}\" title=\"{3}\"></a>",
+            //string tag = string.Format("<a id=\"{0}\" href=\"{1}\"><img alt=\"{3}\" class=\"{2}\" title=\"{3}\"></a>",
+            string tag = string.Format("<a id=\"{0}\" href=\"{1}\"><img class=\"{2}\" title=\"{3}\"></a>",
                 id,
                 uri,
                 imageClass,

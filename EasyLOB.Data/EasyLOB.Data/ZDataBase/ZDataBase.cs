@@ -22,7 +22,7 @@ namespace EasyLOB.Data
 
                 Type entityType = this.GetType();
                 IZProfile profile = DataHelper.GetProfile(entityType);
-                if (!String.IsNullOrEmpty(profile.Lookup))
+                if (!string.IsNullOrEmpty(profile.Lookup))
                 {
                     try
                     {

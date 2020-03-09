@@ -54,12 +54,14 @@ namespace EasyLOB.Environment
         {
             get
             {
-                if (String.IsNullOrEmpty(_tenantName))
+                // EnvironmentManagerDesktop.WebSubDomain = ""
+                string result = EasyLOBHelper.GetService<IEnvironmentManager>().WebSubDomain;
+                if (string.IsNullOrEmpty(result))
                 {
-                    _tenantName = EasyLOBHelper.GetService<IEnvironmentManager>().WebSubDomain;
+                    result = _tenantName ?? "";
                 }
 
-                return _tenantName;
+                return result;
             }
         }
 

@@ -52,7 +52,7 @@ namespace EasyLOB.Environment
 
             HttpResponseBase response = context.HttpContext.Response;
 
-            response.ContentType = !String.IsNullOrEmpty(ContentType) ? ContentType : "application/json";
+            response.ContentType = !string.IsNullOrEmpty(ContentType) ? ContentType : "application/json";
             if (ContentEncoding != null)
             {
                 response.ContentEncoding = ContentEncoding;

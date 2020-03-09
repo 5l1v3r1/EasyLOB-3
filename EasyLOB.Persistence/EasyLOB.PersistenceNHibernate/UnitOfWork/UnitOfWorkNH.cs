@@ -170,7 +170,7 @@ namespace EasyLOB.Persistence
         {
             ZDBMS dbms = AdoNetHelper.GetDBMS(Session.Connection.ConnectionString);
             string sql = AdoNetHelper.SqlIsolationLevel(dbms, isolationLevel);
-            if (!String.IsNullOrEmpty(sql))
+            if (!string.IsNullOrEmpty(sql))
             {
                 SQLCommand(sql);
             }

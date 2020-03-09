@@ -35,7 +35,7 @@ namespace EasyLOB
             string connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
             if (connectionString == null)
             {
-                throw new Exception(String.Format("ConnectionStrings[\"{0}\"] = \"?\"", connectionString));
+                throw new Exception(string.Format("ConnectionStrings[\"{0}\"] = \"?\"", connectionString));
             }
 
             return connectionString;

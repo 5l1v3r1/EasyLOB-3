@@ -46,7 +46,7 @@ namespace EasyLOB.Extensions.Edm
         {
             RootDirectory = ConfigurationHelper.AppSettings<string>("EasyLOB.EDM.FileSystem.Directory");
 
-            if (!String.IsNullOrEmpty(MultiTenantHelper.Tenant.Name))
+            if (!string.IsNullOrEmpty(MultiTenantHelper.Tenant.Name))
             {
                 RootDirectory = Path.Combine(RootDirectory, MultiTenantHelper.Tenant.Name);
             }
@@ -120,7 +120,7 @@ namespace EasyLOB.Extensions.Edm
             string extension = LibraryHelper.GetFileExtension(fileType);
 
             entityName = (entityName == null) ? "" : entityName;
-            string entityKey = String.Format("{0:000000000}", (key / 100) * 100);
+            string entityKey = string.Format("{0:000000000}", (key / 100) * 100);
             string directoryPath = LibraryHelper.AddDirectorySeparator(RootDirectory) +
                 ((entityName == "") ? entityName : entityName + "/") +
                 entityKey;
@@ -132,7 +132,7 @@ namespace EasyLOB.Extensions.Edm
 
             if (Directory.Exists(directoryPath))
             {
-                filePath = directoryPath + "/" + String.Format("{0:000000000}", key) + extension;
+                filePath = directoryPath + "/" + string.Format("{0:000000000}", key) + extension;
             }
 
             return filePath;

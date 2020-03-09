@@ -67,7 +67,7 @@ namespace EasyLOB.Persistence
             {
                 ZDBMS dbms = AdoNetHelper.GetDBMS(dbCommand.Connection);
                 string sql = AdoNetHelper.SqlIsolationLevel(dbms, isolationLevel);
-                dbCommand.CommandText = (String.IsNullOrEmpty(sql) ? "" : sql + Environment.NewLine)
+                dbCommand.CommandText = (string.IsNullOrEmpty(sql) ? "" : sql + Environment.NewLine)
                     + dbCommand.CommandText;
             }
 

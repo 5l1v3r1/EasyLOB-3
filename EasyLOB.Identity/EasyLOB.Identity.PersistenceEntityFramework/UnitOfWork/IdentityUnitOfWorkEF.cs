@@ -16,6 +16,7 @@ namespace EasyLOB.Identity.Persistence
 
             Repositories.Add(typeof(Role), new IdentityRoleRepository(this));
             Repositories.Add(typeof(User), new IdentityUserRepository(this));
+            Repositories.Add(typeof(UserRole), new IdentityUserRoleRepository(this));
         }
 
         public override IGenericRepository<TEntity> GetRepository<TEntity>()

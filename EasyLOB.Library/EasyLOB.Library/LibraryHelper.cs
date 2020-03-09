@@ -365,7 +365,7 @@ namespace EasyLOB.Library
 
         //    //return s;
 
-        //    return String.Join("\n", list);
+        //    return string.Join("\n", list);
         //}
 
         /// <summary>
@@ -1258,7 +1258,7 @@ namespace EasyLOB.Library
         /// <returns>String value</returns>
         public static string DataToString(string value, string format) // DbType.XML
         {
-            if (String.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
             {
                 return "";
             }
@@ -1469,7 +1469,7 @@ namespace EasyLOB.Library
             // Path.PathSeparator = ;
             // Path.VolumeSeparatorChar = :
 
-            if (!String.IsNullOrEmpty(path))
+            if (!string.IsNullOrEmpty(path))
             {
                 string separator = Path.DirectorySeparatorChar.ToString();
                 string altSeparator = Path.AltDirectorySeparatorChar.ToString();
@@ -1486,7 +1486,7 @@ namespace EasyLOB.Library
                     return path + separator;
                 }
 
-                if (!String.IsNullOrEmpty(path)) // [/]
+                if (!string.IsNullOrEmpty(path)) // [/]
                 {
                     return path + altSeparator;
                 }
@@ -1496,7 +1496,7 @@ namespace EasyLOB.Library
                 //    return path + altSeparator;
                 //}
 
-                //if (!String.IsNullOrEmpty(path))
+                //if (!string.IsNullOrEmpty(path))
                 //{
                 //    return path + separator;
                 //}
@@ -1557,7 +1557,7 @@ namespace EasyLOB.Library
 
             foreach (object id in ids)
             {
-                result = (String.IsNullOrEmpty(result) ? "" : ", ") + id.ToString();
+                result = (string.IsNullOrEmpty(result) ? "" : ", ") + id.ToString();
             }
 
             result = entity + " [" + result + "] " + ErrorResources.NotFound;

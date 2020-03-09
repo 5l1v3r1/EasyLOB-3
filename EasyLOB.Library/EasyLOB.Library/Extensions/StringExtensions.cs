@@ -179,7 +179,7 @@ namespace EasyLOB.Library
         /// <returns>byte[] (Binary) value</returns>
         public static byte[] ToBinary(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -222,7 +222,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Boolean value</returns>
         public static bool? ToBooleanNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -262,7 +262,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Byte value</returns>
         public static Byte? ToByteNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -302,7 +302,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable char value</returns>
         public static char? ToCharNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -342,7 +342,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable DateTime value</returns>
         public static DateTime? ToDateTimeNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -382,7 +382,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Decimal value</returns>
         public static decimal? ToDecimalNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -422,7 +422,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Double value</returns>
         public static double? ToDoubleNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -458,7 +458,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Guid value</returns>
         public static Guid? ToGuidNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -489,7 +489,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Int16 value</returns>
         public static short? ToInt16Nullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -529,7 +529,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Int32 value</returns>
         public static int? ToInt32Nullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -569,7 +569,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Int64 value</returns>
         public static long? ToInt64Nullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -629,7 +629,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable Single value</returns>
         public static float? ToSingleNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -665,7 +665,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable string value</returns>
         public static string ToStringNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
             {
                 return null;
             }
@@ -696,7 +696,7 @@ namespace EasyLOB.Library
         /// <returns>Nullable TimeSpan value</returns>
         public static TimeSpan? ToTimeSpanNullable(this string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
                 return null;
             else
             {

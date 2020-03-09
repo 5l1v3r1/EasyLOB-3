@@ -1,8 +1,7 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 /*
-ModelState.AddModelError(String.Empty, "Error");
+ModelState.AddModelError(string.Empty, "Error");
 ModelState.AddModelError("Property","Error");
 
 ZOperationResult result = new ZOperationResult();
@@ -17,11 +16,11 @@ namespace EasyLOB.Environment
         public static void AddOperationResults(this ModelStateDictionary modelStateDictionary,
             ZOperationResult operationResult, string entity)
         {
-            entity = String.IsNullOrEmpty(entity) ? "" : entity + ".";
+            entity = string.IsNullOrEmpty(entity) ? "" : entity + ".";
 
-            if (!String.IsNullOrEmpty(operationResult.ErrorMessage))
+            if (!string.IsNullOrEmpty(operationResult.ErrorMessage))
             {
-                modelStateDictionary.AddModelError(String.Empty, operationResult.ErrorMessage);
+                modelStateDictionary.AddModelError(string.Empty, operationResult.ErrorMessage);
             }
 
             foreach (ZOperationError operationError in operationResult.OperationErrors)
@@ -35,7 +34,7 @@ namespace EasyLOB.Environment
                 }
                 else
                 {
-                    modelStateDictionary.AddModelError(String.Empty, operationError.ErrorMessage);
+                    modelStateDictionary.AddModelError(string.Empty, operationError.ErrorMessage);
                 }
             }
         }

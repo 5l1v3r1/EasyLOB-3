@@ -36,7 +36,7 @@ namespace EasyLOB.Library
 
             if (exception != null)
             {
-                if (!String.IsNullOrEmpty(exception.Message))
+                if (!string.IsNullOrEmpty(exception.Message))
                 {
                     try
                     {
@@ -47,7 +47,7 @@ namespace EasyLOB.Library
 
                 if (operationResult == null && exception.InnerException != null)
                 {
-                    if (!String.IsNullOrEmpty(exception.InnerException.Message))
+                    if (!string.IsNullOrEmpty(exception.InnerException.Message))
                     {
                         try
                         {

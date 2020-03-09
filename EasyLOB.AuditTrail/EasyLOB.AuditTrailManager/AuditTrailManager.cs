@@ -35,7 +35,7 @@ namespace EasyLOB.AuditTrail
                 // (N) None
                 // (K) Entity Key
                 // (E) Full Entity
-                if (!(String.IsNullOrEmpty(logMode) || logMode == "N"))
+                if (!(string.IsNullOrEmpty(logMode) || logMode == "N"))
                 {
                     JsonSerializerSettings jsonSettings = new JsonSerializerSettings
                     {
@@ -62,7 +62,7 @@ namespace EasyLOB.AuditTrail
                     int idIndex = 0;
                     foreach (string idProperty in profile.Keys)
                     {
-                        logId += (String.IsNullOrEmpty(logId) ? "" : "|") + JsonConvert.SerializeObject(ids[idIndex++], jsonSettings);
+                        logId += (string.IsNullOrEmpty(logId) ? "" : "|") + JsonConvert.SerializeObject(ids[idIndex++], jsonSettings);
                     }
 
                     // {"Id1":1,"Id2":2}
@@ -70,7 +70,7 @@ namespace EasyLOB.AuditTrail
                     //int idIndex = 0;
                     //foreach (string idProperty in profile.Keys)
                     //{
-                    //    logId += (String.IsNullOrEmpty(logId) ? "" : ",") + "\"" + idProperty + "\":" + JsonConvert.SerializeObject(ids[idIndex++], settings);
+                    //    logId += (string.IsNullOrEmpty(logId) ? "" : ",") + "\"" + idProperty + "\":" + JsonConvert.SerializeObject(ids[idIndex++], settings);
                     //}
                     //logId = "{" + logId + "}";
 

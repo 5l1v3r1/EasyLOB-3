@@ -11,7 +11,7 @@ namespace EasyLOB.Shell
             AppTenant tenant = MultiTenantHelper.Tenant;
             if (tenant != null)
             {
-                Console.WriteLine(String.Format("\nName: {0}", tenant.Name));
+                Console.WriteLine(string.Format("\nName: {0}", tenant.Name));
             }
             else
             {

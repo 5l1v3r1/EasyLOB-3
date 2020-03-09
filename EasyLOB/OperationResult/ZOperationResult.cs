@@ -38,7 +38,7 @@ namespace EasyLOB
         {
             get
             {
-                return !String.IsNullOrEmpty(ErrorCode) || !String.IsNullOrEmpty(ErrorMessage) || OperationErrors.Count > 0;
+                return !string.IsNullOrEmpty(ErrorCode) || !string.IsNullOrEmpty(ErrorMessage) || OperationErrors.Count > 0;
             }
         }
 
@@ -50,7 +50,7 @@ namespace EasyLOB
         {
             get
             {
-                return !String.IsNullOrEmpty(WarningCode) || !String.IsNullOrEmpty(WarningMessage) || OperationWarnings.Count > 0;
+                return !string.IsNullOrEmpty(WarningCode) || !string.IsNullOrEmpty(WarningMessage) || OperationWarnings.Count > 0;
             }
         }
 
@@ -62,7 +62,7 @@ namespace EasyLOB
         {
             get
             {
-                return !String.IsNullOrEmpty(InformationCode) || !String.IsNullOrEmpty(InformationMessage);
+                return !string.IsNullOrEmpty(InformationCode) || !string.IsNullOrEmpty(InformationMessage);
             }
         }
 
@@ -133,13 +133,13 @@ namespace EasyLOB
 
                 // Error Message
 
-                if (!String.IsNullOrEmpty(ErrorCode) || !String.IsNullOrEmpty(ErrorMessage))
+                if (!string.IsNullOrEmpty(ErrorCode) || !string.IsNullOrEmpty(ErrorMessage))
                 {
                     string text =
                         ErrorResources.Error + ": " +
-                        (!String.IsNullOrEmpty(ErrorCode) ? "[ " + ErrorCode + " ] " : "") +
+                        (!string.IsNullOrEmpty(ErrorCode) ? "[ " + ErrorCode + " ] " : "") +
                         ErrorMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
-                    result += br + String.Format(labelError, text.Trim());
+                    result += br + string.Format(labelError, text.Trim());
                     br = "<br />";
                 }
 
@@ -149,18 +149,18 @@ namespace EasyLOB
                 {
                     string text =
                         ErrorResources.Error + ": " +
-                        (!String.IsNullOrEmpty(operationError.ErrorCode) ? "[ " + operationError.ErrorCode + " ] " : "") +
+                        (!string.IsNullOrEmpty(operationError.ErrorCode) ? "[ " + operationError.ErrorCode + " ] " : "") +
                         operationError.ErrorMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
-                    string members = operationError.ErrorMembers.Count == 0 ? "" : " (" + String.Join(",", operationError.ErrorMembers).Trim() + ")";
-                    result += br + String.Format(labelError, text.Trim() + members);
+                    string members = operationError.ErrorMembers.Count == 0 ? "" : " (" + string.Join(",", operationError.ErrorMembers).Trim() + ")";
+                    result += br + string.Format(labelError, text.Trim() + members);
                     br = "<br />";
 
-                    if (!String.IsNullOrEmpty(operationError.ErrorStackTrace))
+                    if (!string.IsNullOrEmpty(operationError.ErrorStackTrace))
                     {
                         string buttonId = "button" + button++.ToString();
                         result += "&nbsp;" +
-                            String.Format("<button data-toggle=\"collapse\" data-target=\"#{0}\">...</button>", buttonId) +
-                            String.Format("<div id=\"{0}\" class=\"collapse\">", buttonId);
+                            string.Format("<button data-toggle=\"collapse\" data-target=\"#{0}\">...</button>", buttonId) +
+                            string.Format("<div id=\"{0}\" class=\"collapse\">", buttonId);
 
                         result += operationError.ErrorStackTrace.Replace("\r\n", "<br />").Replace("\n", "<br />");
                         //if (operationError.ErrorStackTrace.Contains(" at "))
@@ -184,12 +184,12 @@ namespace EasyLOB
 
                 // Warning Message
 
-                if (!String.IsNullOrEmpty(WarningCode) || !String.IsNullOrEmpty(WarningMessage))
+                if (!string.IsNullOrEmpty(WarningCode) || !string.IsNullOrEmpty(WarningMessage))
                 {
                     string text =
-                        (!String.IsNullOrEmpty(WarningCode) ? "[ " + WarningCode + " ] " : "") +
+                        (!string.IsNullOrEmpty(WarningCode) ? "[ " + WarningCode + " ] " : "") +
                         WarningMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
-                    result += br + String.Format(labelWarning, text.Trim());
+                    result += br + string.Format(labelWarning, text.Trim());
                     br = "<br />";
                 }
 
@@ -199,10 +199,10 @@ namespace EasyLOB
                 {
                     string text =
                         ErrorResources.Warning + ": " +
-                        (!String.IsNullOrEmpty(operationWarning.WarningCode) ? "[ " + operationWarning.WarningCode + " ] " : "") +
+                        (!string.IsNullOrEmpty(operationWarning.WarningCode) ? "[ " + operationWarning.WarningCode + " ] " : "") +
                         operationWarning.WarningMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
-                    string members = operationWarning.WarningMembers.Count == 0 ? "" : " (" + String.Join(",", operationWarning.WarningMembers).Trim() + ")";
-                    result += br + String.Format(labelWarning, text.Trim() + members);
+                    string members = operationWarning.WarningMembers.Count == 0 ? "" : " (" + string.Join(",", operationWarning.WarningMembers).Trim() + ")";
+                    result += br + string.Format(labelWarning, text.Trim() + members);
                     br = "<br />";
                 }
 
@@ -212,12 +212,12 @@ namespace EasyLOB
 
                 // Information Message
 
-                if (!String.IsNullOrEmpty(InformationCode) || !String.IsNullOrEmpty(InformationMessage))
+                if (!string.IsNullOrEmpty(InformationCode) || !string.IsNullOrEmpty(InformationMessage))
                 {
                     string text =
-                        (!String.IsNullOrEmpty(InformationCode) ? "[ " + InformationCode + " ] " : "") +
+                        (!string.IsNullOrEmpty(InformationCode) ? "[ " + InformationCode + " ] " : "") +
                         InformationMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
-                    result += br + String.Format(labelInformation, text.Trim());
+                    result += br + string.Format(labelInformation, text.Trim());
                     br = "<br />";
                 }
 
@@ -227,24 +227,24 @@ namespace EasyLOB
                 {
                     string text =
                         ErrorResources.Information + ": " +
-                        (!String.IsNullOrEmpty(operationInformation.InformationCode) ? "[ " + operationInformation.InformationCode + " ] " : "") +
+                        (!string.IsNullOrEmpty(operationInformation.InformationCode) ? "[ " + operationInformation.InformationCode + " ] " : "") +
                         operationInformation.InformationMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
-                    string members = operationInformation.InformationMembers.Count == 0 ? "" : " (" + String.Join(",", operationInformation.InformationMembers).Trim() + ")";
-                    result += br + String.Format(labelInformation, text.Trim() + members);
+                    string members = operationInformation.InformationMembers.Count == 0 ? "" : " (" + string.Join(",", operationInformation.InformationMembers).Trim() + ")";
+                    result += br + string.Format(labelInformation, text.Trim() + members);
                     br = "<br />";
                 }
 
                 // Data
 
-                if (!String.IsNullOrEmpty(Data))
+                if (!string.IsNullOrEmpty(Data))
                 {
                     string text = "[" + Data + "]";
-                    result += br + String.Format(labelInformation, text.Trim());
+                    result += br + string.Format(labelInformation, text.Trim());
                     br = "<br />";
                 }
 
                 return result;
-                //return result + (String.IsNullOrEmpty(result) ? "" : "<br />");
+                //return result + (string.IsNullOrEmpty(result) ? "" : "<br />");
             }
         }
 
@@ -272,7 +272,7 @@ namespace EasyLOB
 
                 if (!Ok)
                 {
-                    if (!String.IsNullOrWhiteSpace(ErrorMessage))
+                    if (!string.IsNullOrWhiteSpace(ErrorMessage))
                     {
                         message += ErrorMessage;
                     }
@@ -284,7 +284,7 @@ namespace EasyLOB
                         }
                     }
 
-                    if (!String.IsNullOrWhiteSpace(WarningMessage))
+                    if (!string.IsNullOrWhiteSpace(WarningMessage))
                     {
                         message += WarningMessage;
                     }
@@ -298,7 +298,7 @@ namespace EasyLOB
                 }
                 else
                 {
-                    if (!String.IsNullOrWhiteSpace(InformationMessage))
+                    if (!string.IsNullOrWhiteSpace(InformationMessage))
                     {
                         message += InformationMessage;
                     }
@@ -324,10 +324,10 @@ namespace EasyLOB
             get
             {
                 List<string> list = ToList();
-                string result = String.Join("\n", list);
+                string result = string.Join("\n", list);
 
                 return result;
-                //return result + (String.IsNullOrEmpty(result) ? "" : "\n");
+                //return result + (string.IsNullOrEmpty(result) ? "" : "\n");
             }
         }
 
@@ -574,11 +574,11 @@ namespace EasyLOB
 
             // Error Message
 
-            if (!String.IsNullOrEmpty(ErrorCode) || !String.IsNullOrEmpty(ErrorMessage))
+            if (!string.IsNullOrEmpty(ErrorCode) || !string.IsNullOrEmpty(ErrorMessage))
             {
                 string text =
                     ErrorResources.Error + ": " +
-                    (!String.IsNullOrEmpty(ErrorCode) ? "[ " + ErrorCode + " ] " : "") +
+                    (!string.IsNullOrEmpty(ErrorCode) ? "[ " + ErrorCode + " ] " : "") +
                     ErrorMessage;
                 result.Add(text.Trim());
             }
@@ -589,12 +589,12 @@ namespace EasyLOB
             {
                 string text =
                     ErrorResources.Error + ": " +
-                    (!String.IsNullOrEmpty(operationError.ErrorCode) ? "[ " + operationError.ErrorCode + " ] " : "") +
+                    (!string.IsNullOrEmpty(operationError.ErrorCode) ? "[ " + operationError.ErrorCode + " ] " : "") +
                     operationError.ErrorMessage;
-                string members = operationError.ErrorMembers.Count == 0 ? "" : " (" + String.Join(",", operationError.ErrorMembers).Trim() + ")";
+                string members = operationError.ErrorMembers.Count == 0 ? "" : " (" + string.Join(",", operationError.ErrorMembers).Trim() + ")";
                 result.Add(text.Trim() + members);
 
-                if (!String.IsNullOrEmpty(operationError.ErrorStackTrace))
+                if (!string.IsNullOrEmpty(operationError.ErrorStackTrace))
                 {
                     result.Add(operationError.ErrorStackTrace);
                     //if (operationError.ErrorStackTrace.Contains(" at "))
@@ -610,11 +610,11 @@ namespace EasyLOB
 
             // Warning Message
 
-            if (!String.IsNullOrEmpty(WarningCode) || !String.IsNullOrEmpty(WarningMessage))
+            if (!string.IsNullOrEmpty(WarningCode) || !string.IsNullOrEmpty(WarningMessage))
             {
                 string text =
                     ErrorResources.Warning + ": " +
-                    (!String.IsNullOrEmpty(WarningCode) ? "[ " + WarningCode + " ] " : "") +
+                    (!string.IsNullOrEmpty(WarningCode) ? "[ " + WarningCode + " ] " : "") +
                     WarningMessage;
                 result.Add(text.Trim());
             }
@@ -625,19 +625,19 @@ namespace EasyLOB
             {
                 string text =
                     ErrorResources.Warning + ": " +
-                    (!String.IsNullOrEmpty(operationWarning.WarningCode) ? "[ " + operationWarning.WarningCode + " ] " : "") +
+                    (!string.IsNullOrEmpty(operationWarning.WarningCode) ? "[ " + operationWarning.WarningCode + " ] " : "") +
                     operationWarning.WarningMessage;
-                string members = operationWarning.WarningMembers.Count == 0 ? "" : " (" + String.Join(",", operationWarning.WarningMembers).Trim() + ")";
+                string members = operationWarning.WarningMembers.Count == 0 ? "" : " (" + string.Join(",", operationWarning.WarningMembers).Trim() + ")";
                 result.Add(text.Trim() + members);
             }
 
             // Information Message
 
-            if (!String.IsNullOrEmpty(InformationCode) || !String.IsNullOrEmpty(InformationMessage))
+            if (!string.IsNullOrEmpty(InformationCode) || !string.IsNullOrEmpty(InformationMessage))
             {
                 string text =
                     ErrorResources.Information + ": " +
-                    (!String.IsNullOrEmpty(InformationCode) ? "[ " + InformationCode + " ] " : "") +
+                    (!string.IsNullOrEmpty(InformationCode) ? "[ " + InformationCode + " ] " : "") +
                     InformationMessage;
                 result.Add(text.Trim());
             }
@@ -648,9 +648,9 @@ namespace EasyLOB
             {
                 string text =
                     ErrorResources.Information + ": " +
-                    (!String.IsNullOrEmpty(operationInformation.InformationCode) ? "[ " + operationInformation.InformationCode + " ] " : "") +
+                    (!string.IsNullOrEmpty(operationInformation.InformationCode) ? "[ " + operationInformation.InformationCode + " ] " : "") +
                     operationInformation.InformationMessage;
-                string members = operationInformation.InformationMembers.Count == 0 ? "" : " (" + String.Join(",", operationInformation.InformationMembers).Trim() + ")";
+                string members = operationInformation.InformationMembers.Count == 0 ? "" : " (" + string.Join(",", operationInformation.InformationMembers).Trim() + ")";
                 result.Add(text.Trim() + members);
             }
 

@@ -74,7 +74,7 @@ namespace EasyLOB.Activity
                 return result;
             }
 
-            if (!String.IsNullOrEmpty(activity))
+            if (!string.IsNullOrEmpty(activity))
             {
                 string operationIndexAcronym = SecurityHelper.GetSecurityOperationAcronym(ZOperations.Index);
                 string operationSearchAcronym = SecurityHelper.GetSecurityOperationAcronym(ZOperations.Search);
@@ -118,7 +118,7 @@ namespace EasyLOB.Activity
 
             bool result = false;
 
-            if (!String.IsNullOrEmpty(activity))
+            if (!string.IsNullOrEmpty(activity))
             {
                 string operationAcronym = SecurityHelper.GetSecurityOperationAcronym(operation);
 
@@ -326,7 +326,7 @@ namespace EasyLOB.Activity
 
         public string MessageAuthorized(string activity, ZOperations operation)
         {
-            return String.Format(SecurityActivityResources.ActivityOperationAuthorized,
+            return string.Format(SecurityActivityResources.ActivityOperationAuthorized,
                 activity,
                 SecurityHelper.GetSecurityOperationName(operation),
                 AuthenticationManager.UserName);
@@ -334,7 +334,7 @@ namespace EasyLOB.Activity
 
         public string MessageNotAuthorized(string activity)
         {
-            return String.Format(SecurityActivityResources.ActivityOperationNotAuthorized,
+            return string.Format(SecurityActivityResources.ActivityOperationNotAuthorized,
                 activity,
                 "*",
                 AuthenticationManager.UserName);
@@ -342,7 +342,7 @@ namespace EasyLOB.Activity
 
         public string MessageNotAuthorized(string activity, ZOperations operation)
         {
-            return String.Format(SecurityActivityResources.ActivityOperationNotAuthorized,
+            return string.Format(SecurityActivityResources.ActivityOperationNotAuthorized,
                 activity,
                 SecurityHelper.GetSecurityOperationName(operation),
                 AuthenticationManager.UserName);

@@ -87,7 +87,7 @@ namespace EasyLOB.Persistence
 
             // using System.Linq;
             //string connectionString = LibraryHelper.ConnectionStrings(connectionName);
-            //var tokens = connectionString.Split(';').Select(x => x.Split('='));
+            //var tokens = connectionstring.Split(';').Select(x => x.Split('='));
             //string userId = tokens.First(n => n[0].Equals("User ID").Select(x => x[1]);
             //string password = tokens.First(n => n[0].Equals("Password")).Select(x => x[1]);
 

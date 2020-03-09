@@ -288,7 +288,7 @@ namespace EasyLOB.Data
                     profileProperty.IsEditReadOnly = (bool)isEditReadOnly;
                 }
 
-                if (!String.IsNullOrEmpty(editCSS))
+                if (!string.IsNullOrEmpty(editCSS))
                 {
                     profileProperty.EditCSS = editCSS;
                 }

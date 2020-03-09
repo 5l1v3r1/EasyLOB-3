@@ -67,19 +67,19 @@ namespace EasyLOB.Security
 
             string activity = "";
 
-            if (!String.IsNullOrEmpty(domain))
+            if (!string.IsNullOrEmpty(domain))
             {
                 activity = domain;
             }
 
             activity = activity + (activity == "" ? "" : "-") + "Dashboard";
 
-            if (!String.IsNullOrEmpty(dashboardDirectory))
+            if (!string.IsNullOrEmpty(dashboardDirectory))
             {
                 activity = activity + (activity == "" ? "" : "-") + dashboardDirectory;
             }
 
-            if (!String.IsNullOrEmpty(dashboardName))
+            if (!string.IsNullOrEmpty(dashboardName))
             {
                 activity = activity + (activity == "" ? "" : "-") + dashboardName;
             }
@@ -99,12 +99,12 @@ namespace EasyLOB.Security
 
             string activity = "";
 
-            if (!String.IsNullOrEmpty(domain))
+            if (!string.IsNullOrEmpty(domain))
             {
                 activity = domain;
             }
 
-            if (!String.IsNullOrEmpty(entity))
+            if (!string.IsNullOrEmpty(entity))
             {
                 activity = activity + (activity == "" ? "" : "-") + entity;
             }
@@ -126,19 +126,19 @@ namespace EasyLOB.Security
 
             string activity = "";
 
-            if (!String.IsNullOrEmpty(domain))
+            if (!string.IsNullOrEmpty(domain))
             {
                 activity = domain;
             }
 
             activity = activity + (activity == "" ? "" : "-") + "Report";
 
-            if (!String.IsNullOrEmpty(reportDirectory))
+            if (!string.IsNullOrEmpty(reportDirectory))
             {
                 activity = activity + (activity == "" ? "" : "-") + reportDirectory;
             }
 
-            if (!String.IsNullOrEmpty(reportName))
+            if (!string.IsNullOrEmpty(reportName))
             {
                 activity = activity + (activity == "" ? "" : "-") + reportName;
             }
@@ -158,14 +158,14 @@ namespace EasyLOB.Security
 
             string activity = "";
 
-            if (!String.IsNullOrEmpty(domain))
+            if (!string.IsNullOrEmpty(domain))
             {
                 activity = domain;
             }
 
             activity = activity + (activity == "" ? "" : "-") + "Task";
 
-            if (!String.IsNullOrEmpty(taskName))
+            if (!string.IsNullOrEmpty(taskName))
             {
                 activity = activity + (activity == "" ? "" : "-") + taskName;
             }

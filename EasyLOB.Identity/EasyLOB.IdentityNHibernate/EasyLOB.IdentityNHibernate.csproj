@@ -34,12 +34,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IdentityConfigurator.cs" />
-    <Compile Include="IdentityManagers.cs" />
-    <Compile Include="IdentityModels.cs" />
-    <Compile Include="IdentityValidators.cs" />
-    <Compile Include="IdentityViewModels.cs" />
+    <Compile Include="IdentityManagerNH.cs" />
+    <Compile Include="Interfaces\IIdentityManager.cs" />
+    <Compile Include="Managers\ApplicationRoleManager.cs" />
+    <Compile Include="Managers\ApplicationUserManager.cs" />
+    <Compile Include="Managers\ApplicationSignInManager.cs" />
+    <Compile Include="Managers\SqlClientDriverEasyLOB.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\EmailService.cs" />
+    <Compile Include="Models\SmsService.cs" />
+    <Compile Include="Validators\CustomPasswordValidator.cs" />
+    <Compile Include="Validators\CustomUserValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IdentityHelperNH.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\EasyLOB.Data\EasyLOB.Data\EasyLOB.Data.csproj">

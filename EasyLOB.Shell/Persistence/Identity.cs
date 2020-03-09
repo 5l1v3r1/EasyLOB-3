@@ -12,7 +12,7 @@ namespace EasyLOB.Shell
         {
             Console.WriteLine("\nPersistence Identity Demo\n");
 
-            IIdentityUnitOfWork unitOfWork = EasyLOBHelper.DIManager.GetService<IIdentityUnitOfWork>();
+            IIdentityUnitOfWork unitOfWork = EasyLOBHelper.GetService<IIdentityUnitOfWork>();
             Console.WriteLine(unitOfWork.GetType().FullName + " with " + unitOfWork.DBMS.ToString() + "\n");
 
             PersistenceIdentityData<Role>(unitOfWork);

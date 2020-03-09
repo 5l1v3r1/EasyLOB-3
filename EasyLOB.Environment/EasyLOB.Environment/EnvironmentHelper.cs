@@ -31,17 +31,17 @@ namespace EasyLOB.Environment
 
             iniPath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                 "INI/DashboardResources.ini");
-            IniManagerDashboard = EasyLOBHelper.DIManager.GetService<IIniManager>();
+            IniManagerDashboard = EasyLOBHelper.GetService<IIniManager>();
             IniManagerDashboard.Load(iniPath);
 
             iniPath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                 "INI/MenuResources.ini");
-            IniManagerMenu = EasyLOBHelper.DIManager.GetService<IIniManager>();
+            IniManagerMenu = EasyLOBHelper.GetService<IIniManager>();
             IniManagerMenu.Load(iniPath);
 
             iniPath = Path.Combine(environmentManager.ApplicationPath(ConfigurationHelper.AppSettings<string>("EasyLOB.Directory.Configuration")),
                 "INI/ReportResources.ini");
-            IniManagerReport = EasyLOBHelper.DIManager.GetService<IIniManager>();
+            IniManagerReport = EasyLOBHelper.GetService<IIniManager>();
             IniManagerReport.Load(iniPath);
 
             Namespaces = new List<string>()

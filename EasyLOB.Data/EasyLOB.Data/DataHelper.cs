@@ -350,7 +350,7 @@ namespace EasyLOB.Data
                         else
                         {
                             // 1st Property after Primary Key(s)
-                            if (String.IsNullOrEmpty(lookup) &&
+                            if (string.IsNullOrEmpty(lookup) &&
                                 !property.Name.StartsWith("Id") &&
                                 !property.Name.EndsWith("Id") &&
                                 !property.Name.EndsWith("LookupText"))
@@ -362,7 +362,7 @@ namespace EasyLOB.Data
                 }
             }
 
-            lookup = String.IsNullOrEmpty(lookup) ? profile.Keys[0] : lookup;
+            lookup = string.IsNullOrEmpty(lookup) ? profile.Keys[0] : lookup;
 
             profile.IsIdentity = isIdentity;
             profile.Lookup = lookup;
@@ -371,7 +371,7 @@ namespace EasyLOB.Data
             int parameter = 0;
             foreach (string key in profile.Keys)
             {
-                where += String.IsNullOrEmpty(where) ? "" : " && ";
+                where += string.IsNullOrEmpty(where) ? "" : " && ";
                 where += key + " == @" + parameter++.ToString();
             }
             profile.LINQWhere = where;

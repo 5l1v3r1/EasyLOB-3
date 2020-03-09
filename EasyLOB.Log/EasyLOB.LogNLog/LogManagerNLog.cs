@@ -123,9 +123,9 @@ namespace EasyLOB.Log
             }
 
             string log =
-                (String.IsNullOrEmpty(header) ? "" : header.Trim() + Environment.NewLine)
-                + (String.IsNullOrEmpty(operationResult.Text) ? "" : operationResult.Text.Trim() + Environment.NewLine)
-                + (String.IsNullOrEmpty(footer) ? "" : footer.Trim() + Environment.NewLine);
+                (string.IsNullOrEmpty(header) ? "" : header.Trim() + Environment.NewLine)
+                + (string.IsNullOrEmpty(operationResult.Text) ? "" : operationResult.Text.Trim() + Environment.NewLine)
+                + (string.IsNullOrEmpty(footer) ? "" : footer.Trim() + Environment.NewLine);
             logEventInfo.Properties["OperationResult"] = log;
 
             Log.Log(logEventInfo);

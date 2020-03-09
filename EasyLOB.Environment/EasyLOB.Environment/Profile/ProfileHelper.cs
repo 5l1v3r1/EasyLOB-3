@@ -49,7 +49,7 @@ namespace EasyLOB.Environment
             IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
 
             AppProfile profile = (AppProfile)environmentManager.SessionRead(_sessionName);
-            if (profile == null || String.IsNullOrEmpty(profile.UserName))
+            if (profile == null || string.IsNullOrEmpty(profile.UserName))
             {
                 // User
 

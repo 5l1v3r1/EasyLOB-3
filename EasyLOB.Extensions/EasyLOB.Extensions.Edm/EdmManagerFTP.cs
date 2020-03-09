@@ -103,7 +103,7 @@ namespace EasyLOB.Extensions.Edm
             }
             finally
             {
-                if (!String.IsNullOrEmpty(workingDirectory))
+                if (!string.IsNullOrEmpty(workingDirectory))
                 {
                     ftpClient.SetWorkingDirectory(workingDirectory);
                 }
@@ -126,7 +126,7 @@ namespace EasyLOB.Extensions.Edm
             }
             finally
             {
-                if (!String.IsNullOrEmpty(workingDirectory))
+                if (!string.IsNullOrEmpty(workingDirectory))
                 {
                     ftpClient.SetWorkingDirectory(workingDirectory);
                 }
@@ -149,7 +149,7 @@ namespace EasyLOB.Extensions.Edm
             }
             finally
             {
-                if (!String.IsNullOrEmpty(workingDirectory))
+                if (!string.IsNullOrEmpty(workingDirectory))
                 {
                     ftpClient.SetWorkingDirectory(workingDirectory);
                 }
@@ -262,7 +262,7 @@ namespace EasyLOB.Extensions.Edm
                 workingDirectory = ftpClient.GetWorkingDirectory();
 
                 entityName = (entityName == null) ? "" : entityName;
-                string entityKey = String.Format("{0:000000000}", (key / 100) * 100);
+                string entityKey = string.Format("{0:000000000}", (key / 100) * 100);
                 string directoryPath = LibraryHelper.AddDirectorySeparator(RootDirectory) +
                     ((entityName == "") ? entityName : entityName + "/") +
                     entityKey;
@@ -288,12 +288,12 @@ namespace EasyLOB.Extensions.Edm
                 ftpClient.SetWorkingDirectory("/");
                 if (FTPDirectoryExists(directoryPath))
                 {
-                    filePath = directoryPath + "/" + String.Format("{0:000000000}", key) + extension;
+                    filePath = directoryPath + "/" + string.Format("{0:000000000}", key) + extension;
                 }
             }
             finally
             {
-                if (!String.IsNullOrEmpty(workingDirectory))
+                if (!string.IsNullOrEmpty(workingDirectory))
                 {
                     ftpClient.SetWorkingDirectory(workingDirectory);
                 }
