@@ -1,4 +1,5 @@
 ﻿using EasyLOB.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,6 +45,12 @@ namespace EasyLOB
         Task<ApplicationRole> GetRoleByNameAsync(string name);
 
         IQueryable<ApplicationRole> GetRoles();
+
+        bool UpdateRole(ZOperationResult operationResult,
+            string id, string name);
+
+        Task<bool> UpdateRoleAsync(ZOperationResult operationResult,
+            string id, string name);
 
         #endregion Roles
 
@@ -102,6 +109,12 @@ namespace EasyLOB
 
         Task<bool> RemoveUserFromRolesAsync(ZOperationResult operationResult,
             string id, string[] roles);
+
+        bool UpdateUser(ZOperationResult operationResult,
+            string id, string email, DateTime? lockoutEndDate, bool lockoutEnabled);
+
+        Task<bool> UpdateUserAsync(ZOperationResult operationResult,
+            string id, string email, DateTime? lockoutEndDate, bool lockoutEnabled);
 
         #endregion Methods
 

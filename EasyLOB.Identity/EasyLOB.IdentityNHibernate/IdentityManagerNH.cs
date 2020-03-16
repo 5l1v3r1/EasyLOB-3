@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -174,6 +175,48 @@ namespace EasyLOB.Identity
         public IQueryable<ApplicationRole> GetRoles()
         {
             return AppRoleManager.Roles;
+        }
+
+        public bool UpdateRole(ZOperationResult operationResult,
+            string id, string name)
+        {
+            ApplicationRole role = GetRoleById(id);
+            if (role != null)
+            {
+                role.Name = name;
+                IdentityResult result = AppRoleManager.Update(role);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateRole");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public async Task<bool> UpdateRoleAsync(ZOperationResult operationResult,
+            string id, string name)
+        {
+            ApplicationRole role = await GetRoleByIdAsync(id);
+            if (role != null)
+            {
+                role.Name = name;
+                IdentityResult result = await AppRoleManager.UpdateAsync(role);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateRoleAsync");
+            }
+
+            return operationResult.Ok;
         }
 
         #endregion Roles
@@ -419,6 +462,154 @@ namespace EasyLOB.Identity
         public IQueryable<ApplicationUser> GetUsers()
         {
             return AppUserManager.Users;
+        }
+
+        public bool RemoveUserFromRole(ZOperationResult operationResult,
+            string id, string role)
+        {
+            ApplicationUser user = GetUserById(id);
+            if (user != null)
+            {
+                IdentityResult result = AppUserManager.RemoveFromRole(user.Id, role);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "RemoveUserFromRole");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public async Task<bool> RemoveUserFromRoleAsync(ZOperationResult operationResult,
+            string id, string role)
+        {
+            ApplicationUser user = await GetUserByIdAsync(id);
+            if (user != null)
+            {
+                IdentityResult result = await AppUserManager.RemoveFromRoleAsync(user.Id, role);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "RemoveUserFromRoleAsync");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public bool RemoveUserFromRoles(ZOperationResult operationResult,
+            string id, string[] roles)
+        {
+            ApplicationUser user = GetUserById(id);
+            if (user != null)
+            {
+                IdentityResult result = AppUserManager.RemoveFromRoles(user.Id, roles);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "RemoveUserFromRoles");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public async Task<bool> RemoveUserFromRolesAsync(ZOperationResult operationResult,
+            string id, string[] roles)
+        {
+            ApplicationUser user = await GetUserByIdAsync(id);
+            if (user != null)
+            {
+                IdentityResult result = await AppUserManager.RemoveFromRolesAsync(user.Id, roles);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "RemoveUserFromRolesAsync");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public bool UpdateUser(ZOperationResult operationResult,
+            string id, string email, DateTime? lockoutEndDate, bool lockoutEnabled)
+        {
+            ApplicationUser user = GetUserById(id);
+            if (user != null)
+            {
+                DateTime? lockoutEndDateUtc;
+                if (!lockoutEnabled)
+                {
+                    lockoutEndDateUtc = null;
+                }
+                else
+                {
+                    lockoutEndDateUtc = lockoutEndDate ?? DateTime.Now.AddYears(1);
+                    //lockoutEndDateUtc = (lockoutEndDate ?? DateTime.Now.AddYears(1)).ToUniversalTime();
+                }
+
+                user.Email = email;
+                user.LockoutEndDateUtc = lockoutEndDateUtc;
+                user.LockoutEnabled = lockoutEnabled;
+                IdentityResult result = AppUserManager.Update(user);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateUserAsync");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public async Task<bool> UpdateUserAsync(ZOperationResult operationResult,
+            string id, string email, DateTime? lockoutEndDate, bool lockoutEnabled)
+        {
+            ApplicationUser user = await GetUserByIdAsync(id);
+            if (user != null)
+            {
+                DateTime? lockoutEndDateUtc;
+                if (!lockoutEnabled)
+                {
+                    lockoutEndDateUtc = null;
+                }
+                else
+                {
+                    lockoutEndDateUtc = lockoutEndDate ?? DateTime.Now.AddYears(1);
+                    //lockoutEndDateUtc = (lockoutEndDate ?? DateTime.Now.AddYears(1)).ToUniversalTime();
+                }
+
+                user.Email = email;
+                user.LockoutEndDateUtc = lockoutEndDateUtc;
+                user.LockoutEnabled = lockoutEnabled;
+                IdentityResult result = await AppUserManager.UpdateAsync(user);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateUserAsync");
+            }
+
+            return operationResult.Ok;
         }
 
         #endregion Methods

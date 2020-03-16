@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -174,6 +175,48 @@ namespace EasyLOB.Identity
         public IQueryable<ApplicationRole> GetRoles()
         {
             return AppRoleManager.Roles;
+        }
+
+        public bool UpdateRole(ZOperationResult operationResult,
+            string id, string name)
+        {
+            ApplicationRole role = GetRoleById(id);
+            if (role != null)
+            {
+                role.Name = name;
+                IdentityResult result = AppRoleManager.Update(role);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateRole");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public async Task<bool> UpdateRoleAsync(ZOperationResult operationResult,
+            string id, string name)
+        {
+            ApplicationRole role = await GetRoleByIdAsync(id);
+            if (role != null)
+            {
+                role.Name = name;
+                IdentityResult result = await AppRoleManager.UpdateAsync(role);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateRoleAsync");
+            }
+
+            return operationResult.Ok;
         }
 
         #endregion Roles
@@ -496,6 +539,74 @@ namespace EasyLOB.Identity
             else
             {
                 operationResult.AddOperationError("", "RemoveUserFromRolesAsync");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public bool UpdateUser(ZOperationResult operationResult,
+            string id, string email, DateTime? lockoutEndDate, bool lockoutEnabled)
+        {
+            ApplicationUser user = GetUserById(id);
+            if (user != null)
+            {
+                DateTime? lockoutEndDateUtc;
+                if (!lockoutEnabled)
+                {
+                    lockoutEndDateUtc = null;
+                }
+                else
+                {
+                    lockoutEndDateUtc = lockoutEndDate ?? DateTime.Now.AddYears(1);
+                    //lockoutEndDateUtc = (lockoutEndDate ?? DateTime.Now.AddYears(1)).ToUniversalTime();
+                }
+
+                user.Email = email;
+                user.LockoutEndDateUtc = lockoutEndDateUtc;
+                user.LockoutEnabled = lockoutEnabled;
+                IdentityResult result = AppUserManager.Update(user);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateUserAsync");
+            }
+
+            return operationResult.Ok;
+        }
+
+        public async Task<bool> UpdateUserAsync(ZOperationResult operationResult,
+            string id, string email, DateTime? lockoutEndDate, bool lockoutEnabled)
+        {
+            ApplicationUser user = await GetUserByIdAsync(id);
+            if (user != null)
+            {
+                DateTime? lockoutEndDateUtc;
+                if (!lockoutEnabled)
+                {
+                    lockoutEndDateUtc = null;
+                }
+                else
+                {
+                    lockoutEndDateUtc = lockoutEndDate ?? DateTime.Now.AddYears(1);
+                    //lockoutEndDateUtc = (lockoutEndDate ?? DateTime.Now.AddYears(1)).ToUniversalTime();
+                }
+
+                user.Email = email;
+                user.LockoutEndDateUtc = lockoutEndDateUtc;
+                user.LockoutEnabled = lockoutEnabled;
+                IdentityResult result = await AppUserManager.UpdateAsync(user);
+                if (!result.Succeeded)
+                {
+                    operationResult.ParseIdentityResult(result);
+                }
+            }
+            else
+            {
+                operationResult.AddOperationError("", "UpdateUserAsync");
             }
 
             return operationResult.Ok;
