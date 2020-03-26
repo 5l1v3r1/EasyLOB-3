@@ -46,14 +46,14 @@ namespace EasyLOB
 
         object[] GetIds(TEntity entity);
 
-        IEnumerable<TEntity> Search(ZOperationResult operationResult,
+        List<TEntity> Search(ZOperationResult operationResult,
             Expression<Func<TEntity, bool>> where = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             int? skip = null,
             int? take = null,
             List<Expression<Func<TEntity, object>>> associations = null);
 
-        IEnumerable<TEntity> Search(ZOperationResult operationResult,
+        List<TEntity> Search(ZOperationResult operationResult,
             string where = null,
             object[] args = null,
             string orderBy = null,
@@ -61,7 +61,7 @@ namespace EasyLOB
             int? take = null,
             List<string> associations = null);
 
-        IEnumerable<TEntity> SearchAll(ZOperationResult operationResult);
+        List<TEntity> SearchAll(ZOperationResult operationResult);
 
         bool Update(ZOperationResult operationResult, TEntity entity);
 

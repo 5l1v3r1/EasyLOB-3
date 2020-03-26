@@ -228,11 +228,13 @@ namespace EasyLOB.Persistence
 
         public virtual TEntity GetById(object[] ids)
         {
-            string predicate = Profile.LINQWhere;
-            Expression<Func<TEntity, bool>> where =
-                System.Linq.Dynamic.DynamicExpression.ParseLambda<TEntity, bool>(predicate, ids);
+            return Get(Profile.LINQWhere, ids);
 
-            return Get(where);
+            //string predicate = Profile.LINQWhere;
+            //Expression<Func<TEntity, bool>> where =
+            //    System.Linq.Dynamic.DynamicExpression.ParseLambda<TEntity, bool>(predicate, ids);
+
+            //return Get(where);
         }
 
         public virtual object[] GetIds(TEntity entity)
@@ -402,7 +404,7 @@ namespace EasyLOB.Persistence
             return query;
         }
 
-        public virtual IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> where = null,
+        public virtual List<TEntity> Search(Expression<Func<TEntity, bool>> where = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             int? skip = null,
             int? take = null,
@@ -411,10 +413,10 @@ namespace EasyLOB.Persistence
             IEnumerable<TEntity> enumerable = Query(where, orderBy, skip, take, associations).ToList<TEntity>();
             Join(enumerable);
 
-            return enumerable;
+            return enumerable.ToList<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> Search(string where = null,
+        public virtual List<TEntity> Search(string where = null,
             object[] args = null,
             string orderBy = null,
             int? skip = null,
@@ -424,15 +426,15 @@ namespace EasyLOB.Persistence
             IEnumerable<TEntity> enumerable = Query(where, args, orderBy, skip, take, associations).ToList<TEntity>();
             Join(enumerable);
 
-            return enumerable;
+            return enumerable.ToList<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> SearchAll()
+        public virtual List<TEntity> SearchAll()
         {
             IEnumerable<TEntity> enumerable = Query().ToList<TEntity>();
             Join(enumerable);
 
-            return enumerable;
+            return enumerable.ToList<TEntity>();
         }
 
         public void SetSequence(int value)

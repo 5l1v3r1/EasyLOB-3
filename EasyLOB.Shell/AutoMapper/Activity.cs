@@ -1,5 +1,4 @@
 ﻿using EasyLOB.Activity.Data;
-using AutoMapper;
 using System;
 
 namespace EasyLOB.Shell

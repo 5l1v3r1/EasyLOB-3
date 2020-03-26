@@ -62,7 +62,7 @@ namespace EasyLOB.Persistence
             throw new NotSupportedException();
         }
 
-        public virtual IEnumerable<T> SQLQuery<T>(string sql)
+        public virtual List<TEntity> SQLQuery<TEntity>(string sql)
         {
             throw new NotSupportedException();
         }

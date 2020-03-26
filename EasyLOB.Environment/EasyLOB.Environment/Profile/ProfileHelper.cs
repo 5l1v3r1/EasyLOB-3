@@ -57,7 +57,7 @@ namespace EasyLOB.Environment
 
                 // AuditTrail
 
-                List<AuditTrailConfiguration> auditTrailConfigurations = (List<AuditTrailConfiguration>)auditTrailunitOfWork
+                List<AuditTrailConfiguration> auditTrailConfigurations = auditTrailunitOfWork
                     .GetQuery<AuditTrailConfiguration>()
                     .OrderBy(x => x.Domain)
                     .ThenBy(x => x.Entity)

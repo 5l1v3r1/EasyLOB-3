@@ -212,8 +212,8 @@ namespace EasyLOB
         /// <param name="skip">Records to skip</param>
         /// <param name="take">Records to take</param>
         /// <param name="associations">Associations LINQ expression</param>
-        /// <returns>IEnumerable</returns>
-        IEnumerable<TEntityDTO> Search(Expression<Func<TEntityDTO, bool>> where = null,
+        /// <returns>List</returns>
+        List<TEntityDTO> Search(Expression<Func<TEntityDTO, bool>> where = null,
             Func<IQueryable<TEntityDTO>, IOrderedQueryable<TEntityDTO>> orderBy = null,
             int? skip = null,
             int? take = null,
@@ -228,8 +228,8 @@ namespace EasyLOB
         /// <param name="skip">Records to skip</param>
         /// <param name="take">Records to take</param>
         /// <param name="associations">Associations</param>
-        /// <returns>IEnumerable</returns>
-        IEnumerable<TEntityDTO> Search(string where = null,
+        /// <returns>List</returns>
+        List<TEntityDTO> Search(string where = null,
             object[] args = null,
             string orderBy = null,
             int? skip = null,
@@ -239,8 +239,8 @@ namespace EasyLOB
         /// <summary>
         /// Select ALL.
         /// </summary>
-        /// <returns>IEnumerable</returns>
-        IEnumerable<TEntityDTO> SearchAll();
+        /// <returns>List</returns>
+        List<TEntityDTO> SearchAll();
 
         /// <summary>
         /// Set DBMS Sequence.

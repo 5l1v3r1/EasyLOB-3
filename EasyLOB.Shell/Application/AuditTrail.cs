@@ -1,5 +1,4 @@
 ﻿using EasyLOB.AuditTrail;
-using EasyLOB.AuditTrail.Application;
 using EasyLOB.AuditTrail.Data;
 using EasyLOB.Data;
 using System;
@@ -28,7 +27,7 @@ namespace EasyLOB.Shell
 
             IAuditTrailGenericApplication<TEntity> application =
                 EasyLOBHelper.GetService<IAuditTrailGenericApplication<TEntity>>();
-            IEnumerable<TEntity> enumerable = application.SearchAll(operationResult);
+            List<TEntity> enumerable = application.SearchAll(operationResult);
             if (operationResult.Ok)
             {
                 Console.WriteLine(typeof(TEntity).Name + ": {0}", enumerable.Count());
@@ -47,7 +46,7 @@ namespace EasyLOB.Shell
 
             IAuditTrailGenericApplicationDTO<TEntityDTO, TEntity> application =
                 EasyLOBHelper.GetService<IAuditTrailGenericApplicationDTO<TEntityDTO, TEntity>>();
-            IEnumerable<TEntityDTO> enumerable = application.SearchAll(operationResult);
+            List<TEntityDTO> enumerable = application.SearchAll(operationResult);
             if (operationResult.Ok)
             {
                 Console.WriteLine(typeof(TEntity).Name + ": {0}", enumerable.Count());

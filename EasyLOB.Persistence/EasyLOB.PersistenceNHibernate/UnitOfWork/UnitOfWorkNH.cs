@@ -100,9 +100,9 @@ namespace EasyLOB.Persistence
             return Session.CreateQuery(sql).ExecuteUpdate();
         }
 
-        public virtual IEnumerable<T> SQLQuery<T>(string sql)
+        public virtual List<TEntity> SQLQuery<TEntity>(string sql)
         {
-            return Session.CreateSQLQuery(sql).List<T>();
+            return Session.CreateSQLQuery(sql).List<TEntity>().ToList<TEntity>();
         }
 
         public IZProfile GetProfile<TEntity>()

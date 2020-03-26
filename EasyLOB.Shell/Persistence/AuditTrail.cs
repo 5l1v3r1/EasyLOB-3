@@ -1,5 +1,6 @@
 ﻿using EasyLOB.AuditTrail;
 using EasyLOB.AuditTrail.Data;
+using EasyLOB.Data;
 using System;
 using System.Linq;
 

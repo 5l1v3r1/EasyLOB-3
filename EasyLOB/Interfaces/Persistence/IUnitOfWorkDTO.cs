@@ -67,8 +67,8 @@ namespace EasyLOB
         /// Execute SQL Query.
         /// </summary>
         /// <param name="sql">SQL</param>
-        /// <returns>IEnumerable[T]></returns>
-        IEnumerable<T> SQLQuery<T>(string sql);
+        /// <returns>List</returns>
+        List<TEntity> SQLQuery<TEntity>(string sql);
 
         /// <summary>
         /// Get Profile.

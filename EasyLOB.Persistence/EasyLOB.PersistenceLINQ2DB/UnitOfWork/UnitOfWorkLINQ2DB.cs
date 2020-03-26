@@ -102,9 +102,9 @@ namespace EasyLOB.Persistence
             return Connection.Execute(sql);
         }
 
-        public virtual IEnumerable<T> SQLQuery<T>(string sql)
+        public virtual List<TEntity> SQLQuery<TEntity>(string sql)
         {
-            return Connection.ExecuteReader(sql).Query<T>();
+            return Connection.ExecuteReader(sql).Query<TEntity>().ToList<TEntity>();
         }
 
         public IZProfile GetProfile<TEntity>()

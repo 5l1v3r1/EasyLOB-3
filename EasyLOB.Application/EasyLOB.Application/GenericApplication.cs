@@ -232,13 +232,13 @@ namespace EasyLOB.Application
             return Repository.GetIds(entity);
         }
 
-        public virtual IEnumerable<TEntity> Search(ZOperationResult operationResult, Expression<Func<TEntity, bool>> where = null,
+        public virtual List<TEntity> Search(ZOperationResult operationResult, Expression<Func<TEntity, bool>> where = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             int? skip = null,
             int? take = null,
             List<Expression<Func<TEntity, object>>> associations = null)
         {
-            IEnumerable<TEntity> result = new List<TEntity>();
+            List<TEntity> result = new List<TEntity>();
 
             try
             {
@@ -255,14 +255,14 @@ namespace EasyLOB.Application
             return result;
         }
 
-        public virtual IEnumerable<TEntity> Search(ZOperationResult operationResult, string where = null,
+        public virtual List<TEntity> Search(ZOperationResult operationResult, string where = null,
             object[] args = null,
             string orderBy = null,
             int? skip = null,
             int? take = null,
             List<string> associations = null)
         {
-            IEnumerable<TEntity> result = new List<TEntity>();
+            List<TEntity> result = new List<TEntity>();
 
             try
             {
@@ -279,9 +279,9 @@ namespace EasyLOB.Application
             return result;
         }
 
-        public IEnumerable<TEntity> SearchAll(ZOperationResult operationResult)
+        public List<TEntity> SearchAll(ZOperationResult operationResult)
         {
-            IEnumerable<TEntity> result = new List<TEntity>();
+            List<TEntity> result = new List<TEntity>();
 
             try
             {

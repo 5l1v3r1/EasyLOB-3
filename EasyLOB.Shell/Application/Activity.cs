@@ -1,5 +1,4 @@
 ﻿using EasyLOB.Activity;
-using EasyLOB.Activity.Application;
 using EasyLOB.Activity.Data;
 using EasyLOB.Data;
 using System;
@@ -27,7 +26,7 @@ namespace EasyLOB.Shell
             IActivityGenericApplication<TEntity> application =
                 EasyLOBHelper.GetService<IActivityGenericApplication<TEntity>>();
             ZOperationResult operationResult = new ZOperationResult();
-            IEnumerable<TEntity> enumerable = application.SearchAll(operationResult);
+            List<TEntity> enumerable = application.SearchAll(operationResult);
             Console.WriteLine(typeof(TEntity).Name + ": {0}", enumerable.Count());
         }
 
@@ -38,7 +37,7 @@ namespace EasyLOB.Shell
             IActivityGenericApplicationDTO<TEntityDTO, TEntity> application =
                 EasyLOBHelper.GetService<IActivityGenericApplicationDTO<TEntityDTO, TEntity>>();
             ZOperationResult operationResult = new ZOperationResult();
-            IEnumerable<TEntityDTO> enumerable = application.SearchAll(operationResult);
+            List<TEntityDTO> enumerable = application.SearchAll(operationResult);
             Console.WriteLine(typeof(TEntity).Name + "DTO: {0}", enumerable.Count());
         }
     }

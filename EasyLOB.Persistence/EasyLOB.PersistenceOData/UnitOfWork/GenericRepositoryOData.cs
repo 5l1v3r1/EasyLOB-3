@@ -210,11 +210,13 @@ namespace EasyLOB.Persistence
 
         public virtual TEntityDTO GetById(object[] ids)
         {
-            string predicate = Profile.LINQWhere;
-            Expression<Func<TEntityDTO, bool>> where =
-                System.Linq.Dynamic.DynamicExpression.ParseLambda<TEntityDTO, bool>(predicate, ids);
+            return Get(Profile.LINQWhere, ids);
 
-            return Get(where);
+            //string predicate = Profile.LINQWhere;
+            //Expression<Func<TEntityDTO, bool>> where =
+            //    System.Linq.Dynamic.DynamicExpression.ParseLambda<TEntityDTO, bool>(predicate, ids);
+
+            //return Get(where);
         }
 
         public virtual object[] GetIds(TEntityDTO entityDTO)
@@ -373,7 +375,7 @@ namespace EasyLOB.Persistence
             return query;
         }
 
-        public virtual IEnumerable<TEntityDTO> Search(Expression<Func<TEntityDTO, bool>> where = null,
+        public virtual List<TEntityDTO> Search(Expression<Func<TEntityDTO, bool>> where = null,
             Func<IQueryable<TEntityDTO>, IOrderedQueryable<TEntityDTO>> orderBy = null,
             int? skip = null,
             int? take = null,
@@ -385,7 +387,7 @@ namespace EasyLOB.Persistence
             return query.ToList<TEntityDTO>();
         }
 
-        public virtual IEnumerable<TEntityDTO> Search(string where = null,
+        public virtual List<TEntityDTO> Search(string where = null,
             object[] args = null,
             string orderBy = null,
             int? skip = null,
@@ -398,9 +400,9 @@ namespace EasyLOB.Persistence
             return query.ToList<TEntityDTO>();
         }
 
-        public virtual IEnumerable<TEntityDTO> SearchAll()
+        public virtual List<TEntityDTO> SearchAll()
         {
-            return Query().ToList();
+            return Query().ToList<TEntityDTO>();
         }
 
         public virtual void SetSequence(int value)

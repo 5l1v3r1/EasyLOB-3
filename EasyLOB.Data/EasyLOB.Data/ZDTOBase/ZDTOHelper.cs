@@ -19,34 +19,42 @@ namespace EasyLOB.Data
         /// </summary>
         /// <param name="dataModels">Data list</param>
         /// <returns></returns>
-        public static List<TEntityDTO> ToDTOList(IEnumerable<TEntity> dataModels) // List<DataModel> -> List<DTO>
+        public static List<TEntityDTO> ToDTOList(List<TEntity> dataModels) // List<DataModel> -> List<DTO>
         {
-            List<TEntityDTO> dtos = new List<TEntityDTO>();
-
-            foreach (TEntity dataModel in dataModels)
-            {
-                dtos.Add((TEntityDTO)Activator.CreateInstance(typeof(TEntityDTO), dataModel));
-            }
-
-            return dtos;
+            return EasyLOBHelper.Mapper.Map<List<TEntity>, List<TEntityDTO>>(dataModels);
         }
+        //public static List<TEntityDTO> ToDTOList(IEnumerable<TEntity> dataModels) // List<DataModel> -> List<DTO>
+        //{
+        //    List<TEntityDTO> dtos = new List<TEntityDTO>();
+
+        //    foreach (TEntity dataModel in dataModels)
+        //    {
+        //        dtos.Add((TEntityDTO)Activator.CreateInstance(typeof(TEntityDTO), dataModel));
+        //    }
+
+        //    return dtos;
+        //}
 
         /// <summary>
         /// Convert DTO list to data list.
         /// </summary>
         /// <param name="dtos">DTO list</param>
         /// <returns></returns>
-        public static List<TEntity> ToDataList(IEnumerable<TEntityDTO> dtos) // List<DTO> -> List<DataModel>
+        public static List<TEntity> ToDataList(List<TEntityDTO> dtos) // List<DTO> -> List<DataModel>
         {
-            List<TEntity> dataModels = new List<TEntity>();
-
-            foreach (TEntityDTO dto in dtos)
-            {
-                dataModels.Add(dto.ToData() as TEntity);
-            }
-
-            return dataModels;
+            return EasyLOBHelper.Mapper.Map<List<TEntityDTO>, List<TEntity>>(dtos);
         }
+        //public static List<TEntity> ToDataList(IEnumerable<TEntityDTO> dtos) // List<DTO> -> List<DataModel>
+        //{
+        //    List<TEntity> dataModels = new List<TEntity>();
+
+        //    foreach (TEntityDTO dto in dtos)
+        //    {
+        //        dataModels.Add(dto.ToData() as TEntity);
+        //    }
+
+        //    return dataModels;
+        //}
 
         #endregion Methods
     }

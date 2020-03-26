@@ -1,6 +1,6 @@
-﻿using EasyLOB.Data;
-using EasyLOB.Identity;
+﻿using EasyLOB.Identity;
 using EasyLOB.Identity.Data;
+using EasyLOB.Data;
 using System;
 using System.Linq;
 

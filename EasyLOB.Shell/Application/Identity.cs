@@ -1,7 +1,6 @@
-﻿using EasyLOB.Data;
-using EasyLOB.Identity;
-using EasyLOB.Identity.Application;
+﻿using EasyLOB.Identity;
 using EasyLOB.Identity.Data;
+using EasyLOB.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +35,7 @@ namespace EasyLOB.Shell
             IIdentityGenericApplication<TEntity> application =
                 EasyLOBHelper.GetService<IIdentityGenericApplication<TEntity>>();
             ZOperationResult operationResult = new ZOperationResult();
-            IEnumerable<TEntity> enumerable = application.SearchAll(operationResult);
+            List<TEntity> enumerable = application.SearchAll(operationResult);
             Console.WriteLine(typeof(TEntity).Name + ": {0}", enumerable.Count());
         }
 

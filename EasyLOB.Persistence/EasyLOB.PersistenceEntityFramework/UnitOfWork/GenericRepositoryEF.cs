@@ -147,16 +147,9 @@ namespace EasyLOB.Persistence
         {
             try
             {
-                //entity = GetById(GetIds(entity));
-
-                string predicate = Profile.LINQWhere;
-                Expression<Func<TEntity, bool>> where =
-                    System.Linq.Dynamic.DynamicExpression.ParseLambda<TEntity, bool>(predicate, GetIds(entity));
                 entity = Set.AsQueryable<TEntity>()
-                    .Where(where)
-                    //.AsNoTracking()
+                    .Where(Profile.LINQWhere, GetIds(entity))
                     .FirstOrDefault();
-
                 if (entity != null)
                 {
                     if (entity.BeforeDelete(operationResult))
@@ -165,10 +158,10 @@ namespace EasyLOB.Persistence
                         {
                             //if (UnitOfWork.BeforeDelete(operationResult, entity))
                             {
-                                Context.Entry(entity).State = EntityState.Deleted;
+                                Set.Remove(entity);
 
                                 //Set.Attach(entity);
-                                //Set.Remove(entity);
+                                //Context.Entry(entity).State = EntityState.Deleted;
 
                                 if (entity.AfterDelete(operationResult))
                                 {
@@ -233,13 +226,13 @@ namespace EasyLOB.Persistence
 
         public virtual TEntity GetById(object[] ids)
         {
-            //return Set.Find(ids);
+            return Get(Profile.LINQWhere, ids);
 
-            string predicate = Profile.LINQWhere;
-            Expression<Func<TEntity, bool>> where =
-                System.Linq.Dynamic.DynamicExpression.ParseLambda<TEntity, bool>(predicate, ids);
+            //string predicate = Profile.LINQWhere;
+            //Expression<Func<TEntity, bool>> where =
+            //    System.Linq.Dynamic.DynamicExpression.ParseLambda<TEntity, bool>(predicate, ids);
 
-            return Get(where);
+            //return Get(where);
         }
 
         public virtual object[] GetIds(TEntity entity)
@@ -435,7 +428,7 @@ namespace EasyLOB.Persistence
             return query.AsNoTracking();
         }
 
-        public virtual IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> where = null,
+        public virtual List<TEntity> Search(Expression<Func<TEntity, bool>> where = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             int? skip = null,
             int? take = null,
@@ -444,7 +437,7 @@ namespace EasyLOB.Persistence
             return Query(where, orderBy, skip, take, associations).ToList<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> Search(string where = null,
+        public virtual List<TEntity> Search(string where = null,
             object[] args = null,
             string orderBy = null,
             int? skip = null,
@@ -454,7 +447,7 @@ namespace EasyLOB.Persistence
             return Query(where, args, orderBy, skip, take, associations).ToList<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> SearchAll()
+        public virtual List<TEntity> SearchAll()
         {
             return Query().ToList<TEntity>();
         }
@@ -473,10 +466,10 @@ namespace EasyLOB.Persistence
                     {
                         //if (UnitOfWork.BeforeUpdate(operationResult, entity))
                         {
+                            Set.AddOrUpdate(entity); // System.Data.Entity.Migrations
+
                             //Set.Attach(entity);
                             //Context.Entry(entity).State = EntityState.Modified;
-
-                            Set.AddOrUpdate(entity); // System.Data.Entity.Migrations
 
                             if (entity.AfterUpdate(operationResult))
                             {
