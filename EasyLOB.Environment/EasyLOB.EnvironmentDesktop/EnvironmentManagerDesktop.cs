@@ -117,7 +117,31 @@ namespace EasyLOB.Environment
             return result;
         }
 
+        public T SessionRead<T>(string sessionName)
+        {
+            T result = default(T);
+
+            if (SessionDictionary.ContainsKey(sessionName))
+            {
+                result = (T)SessionDictionary[sessionName];
+            }
+
+            return result;
+        }
+
         public void SessionWrite(string sessionName, object value)
+        {
+            if (SessionDictionary.ContainsKey(sessionName))
+            {
+                SessionDictionary[sessionName] = value;
+            }
+            else
+            {
+                SessionDictionary.Add(sessionName, value);
+            }
+        }
+
+        public void SessionWrite<T>(string sessionName, T value)
         {
             if (SessionDictionary.ContainsKey(sessionName))
             {

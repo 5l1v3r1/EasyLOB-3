@@ -63,6 +63,13 @@ namespace EasyLOB.Environment
 
                 return result;
             }
+            set
+            {
+                if (string.IsNullOrEmpty(_tenantName))
+                {
+                    _tenantName = value;
+                }
+            }
         }
 
         /// <summary>
@@ -97,15 +104,6 @@ namespace EasyLOB.Environment
         #endregion Properties
 
         #region Methods
-
-        /// <summary>
-        /// Setup.
-        /// </summary>
-        /// <param name="tenantName"></param>
-        public static void Setup(string tenantName)
-        {
-            _tenantName = tenantName;
-        }
 
         /// <summary>
         /// Get connection name.

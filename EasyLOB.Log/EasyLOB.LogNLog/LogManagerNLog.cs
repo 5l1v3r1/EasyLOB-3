@@ -93,14 +93,11 @@ namespace EasyLOB.Log
             string message = operationResult.Message;
             LogEventInfo logEventInfo = new LogEventInfo(LogLevel.Trace, Log.Name, message);
 
-            // data.OperationResultOk:False
-            // data.OperationResultOk:True
-            //logEventInfo.Properties["X-ELMAHIO-SEARCH-OperationResultOk"] = operationResultLog.Ok.ToString();
-
             if (operationResult.ErrorException != null)
             {
                 logEventInfo.Exception = operationResult.ErrorException;
                 logEventInfo.Level = LogLevel.Fatal;
+                logEventInfo.Properties["OperationResultOk"] = operationResult.Ok.ToString();
                 logEventInfo.Properties["OperationResultStatus"] = "Exception";
             }
             else
@@ -108,16 +105,19 @@ namespace EasyLOB.Log
                 if (operationResult.Error)
                 {
                     logEventInfo.Level = LogLevel.Error;
+                    logEventInfo.Properties["OperationResultOk"] = operationResult.Ok.ToString();
                     logEventInfo.Properties["OperationResultStatus"] = "Error";
                 }
                 else if (operationResult.Warning)
                 {
                     logEventInfo.Level = LogLevel.Warn;
+                    logEventInfo.Properties["OperationResultOk"] = operationResult.Ok.ToString();
                     logEventInfo.Properties["OperationResultStatus"] = "Warning";
                 }
                 else
                 {
                     logEventInfo.Level = LogLevel.Info;
+                    logEventInfo.Properties["OperationResultOk"] = operationResult.Ok.ToString();
                     logEventInfo.Properties["OperationResultStatus"] = "Information";
                 }
             }

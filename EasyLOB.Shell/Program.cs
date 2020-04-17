@@ -3,7 +3,7 @@ using EasyLOB.Environment;
 using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
-// EF 6.0 Log
+// Entity Framework Log
 //using EasyLOB.Persistence;
 //using System.Data.Entity.Infrastructure.Interception;
 
@@ -18,11 +18,10 @@ namespace EasyLOB.Shell
             // Unity
             //AppDIUnityHelper.Setup(new UnityContainer());
 
-            MultiTenantHelper.Setup("MyLOB");
+            MultiTenantHelper.TenantName = "MyLOB";
 
-            // EF 6.0 Log
-            //ILogManager logManager = DIHelper.DIManager.GetService<ILogManager>();
-            //DbInterception.Add(new NLogCommandInterceptor(logManager));
+            // Entity Framework Log
+            //DbInterception.Add(new EasyLOBDbCommandInterceptor());
 
             bool exit = false;
             while (!exit)

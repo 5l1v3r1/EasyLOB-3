@@ -76,11 +76,26 @@
         object SessionRead(string sessionName);
 
         /// <summary>
+        /// Read session by name.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sessionName"></param>
+        /// <returns></returns>
+        T SessionRead<T>(string sessionName);
+
+        /// <summary>
         /// Write session by name.
         /// </summary>
         /// <param name="sessionName"></param>
         /// <param name="value"></param>
         void SessionWrite(string sessionName, object value);
+
+        /// <summary>
+        /// Write session by name.
+        /// </summary>
+        /// <param name="sessionName"></param>
+        /// <param name="value"></param>
+        void SessionWrite<T>(string sessionName, T value);
 
         #endregion Methods Session
     }

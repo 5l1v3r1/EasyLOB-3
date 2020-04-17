@@ -66,7 +66,7 @@ namespace EasyLOB.Data
 
         //public virtual IZDTOBase<TEntityDTO, TEntity> ToDTO()
         //{
-        //    return DIHelper.Mapper.Map<ZDTOBase<TEntityDTO, TEntity>>(this);
+        //    return EasyLOBHelper.Mapper.Map<ZDTOBase<TEntityDTO, TEntity>>(this);
         //}
 
         #endregion Methods

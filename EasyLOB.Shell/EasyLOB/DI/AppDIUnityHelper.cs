@@ -58,9 +58,11 @@ namespace EasyLOB
             //container.RegisterType(typeof(IEnvironmentManager), typeof(EnvironmentManagerWeb), AppLifetimeManager);
 
             IMapper mapper = AppHelper.SetupMappers();
+
             AppHelper.SetupProfiles();
 
-            EasyLOBHelper.Setup(new DIManagerUnity(container), mapper);
+            EasyLOBHelper.DIManager = new DIManagerUnity(container);
+            EasyLOBHelper.Mapper = mapper;
         }
 
         #endregion Methods

@@ -10,7 +10,7 @@ namespace EasyLOB.Activity.Persistence
         public ActivityUnitOfWorkLINQ2DB(IAuthenticationManager authenticationManager)
             : base(new ActivityLINQ2DB(), authenticationManager)
         {
-            //Domain = "Activity"; // ???
+            Domain = "Activity";
 
             Repositories.Add(typeof(EasyLOB.Activity.Data.Activity), new ActivityActivityRepositoryLINQ2DB(this));            
             Repositories.Add(typeof(ActivityRole), new ActivityActivityRoleRepositoryLINQ2DB(this));            

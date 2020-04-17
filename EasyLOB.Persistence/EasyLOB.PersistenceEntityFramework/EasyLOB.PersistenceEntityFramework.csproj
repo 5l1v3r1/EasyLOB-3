@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFrameworkHelper.cs" />
-    <Compile Include="NLogCommandInterceptor.cs" />
+    <Compile Include="EasyLOBDbCommandInterceptor.cs" />
     <Compile Include="Extensions\ZOperationResultExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\GenericRepositoryEF.cs" />

@@ -108,9 +108,11 @@ namespace EasyLOB.AuditTrail
 
             if (AuditTrailHelper.IsAuditTrail)
             {
+                logDomain = logDomain.ToLower();
+                logEntity = logEntity.ToLower();
                 foreach (AppProfileAuditTrail auditTrail in ProfileHelper.Profile.AuditTrail)
                 {
-                    if (auditTrail.Domain == logDomain && auditTrail.Entity == logEntity)
+                    if (auditTrail.Domain.ToLower() == logDomain && auditTrail.Entity.ToLower() == logEntity)
                     {
                         if (auditTrail.LogOperations.Contains(logOperation))
                         {
@@ -124,7 +126,7 @@ namespace EasyLOB.AuditTrail
 
                 //AuditTrailConfiguration auditTrailConfiguration = UnitOfWork
                 //    .GetRepository<AuditTrailConfiguration>()
-                //    .Get(x => x.Domain == logDomain && x.Entity == logEntity && x.LogOperations.Contains(logOperation));
+                //    .Get(x => x.Domain.ToLower() == logDomain && x.Entity.ToLower() == logEntity && x.LogOperations.Contains(logOperation));
                 //if (auditTrailConfiguration != null)
                 //{
                 //    result = true;

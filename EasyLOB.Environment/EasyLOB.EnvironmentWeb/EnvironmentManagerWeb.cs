@@ -157,7 +157,27 @@ namespace EasyLOB.Environment
             return result;
         }
 
+        public T SessionRead<T>(string sessionName)
+        {
+            T result = default(T);
+
+            if (Session != null)
+            {
+                result = (T)Session[sessionName];
+            }
+
+            return result;
+        }
+
         public void SessionWrite(string sessionName, object value)
+        {
+            if (Session != null)
+            {
+                Session[sessionName] = value;
+            }
+        }
+
+        public void SessionWrite<T>(string sessionName, T value)
         {
             if (Session != null)
             {

@@ -9,7 +9,7 @@ namespace EasyLOB.AuditTrail.Persistence
         public AuditTrailUnitOfWorkNH(IAuthenticationManager authenticationManager)
             : base(AuditTrailFactory.Session, authenticationManager)
         {
-            //Domain = "AuditTrail"; // ???
+            Domain = "AuditTrail";
 
             //ISession session = base.Session;
         }

@@ -46,11 +46,11 @@ namespace EasyLOB.Environment
         /// <param name="auditTrailunitOfWork">Authorization manager</param>
         public static void Login(IAuthenticationManager authenticationManager, IAuditTrailUnitOfWork auditTrailunitOfWork)
         {
-            IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
-
-            AppProfile profile = (AppProfile)environmentManager.SessionRead(_sessionName);
+            AppProfile profile = Profile;
             if (profile == null || string.IsNullOrEmpty(profile.UserName))
             {
+                IEnvironmentManager environmentManager = EasyLOBHelper.GetService<IEnvironmentManager>();
+
                 // User
 
                 profile = new AppProfile(authenticationManager);

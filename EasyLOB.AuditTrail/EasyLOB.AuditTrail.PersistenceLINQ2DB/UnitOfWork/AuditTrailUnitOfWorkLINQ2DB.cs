@@ -10,7 +10,7 @@ namespace EasyLOB.AuditTrail.Persistence
         public AuditTrailUnitOfWorkLINQ2DB(IAuthenticationManager authenticationManager)
             : base(new AuditTrailLINQ2DB(), authenticationManager)
         {
-            //Domain = "AuditTrail"; // ???
+            Domain = "AuditTrail";
 
             Repositories.Add(typeof(AuditTrailConfiguration), new AuditTrailAuditTrailConfigurationRepositoryLINQ2DB(this));            
             Repositories.Add(typeof(AuditTrailLog), new AuditTrailAuditTrailLogRepositoryLINQ2DB(this));            

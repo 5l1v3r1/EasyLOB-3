@@ -16,7 +16,6 @@ namespace EasyLOB.AuditTrail.Persistence
 
         #region Properties
 
-        //public static string ConnectionString { get { return "AuditTrail"; } }
         public static string ConnectionString { get { return MultiTenantHelper.GetConnectionName("AuditTrail"); } } // !?! Multi-Tenant
 
         private static ISessionFactory _sessionFactory = null;
