@@ -106,7 +106,16 @@ namespace EasyLOB
             {
                 if (OperationErrors.Count > 0)
                 {
-                    return new ZOperationResultException(OperationErrors[0].ErrorMessage ?? "", OperationErrors[0].ErrorStackTrace ?? "");
+                    int error = 1;
+                    string errorStackTrace = "";
+                    foreach (ZOperationError operationError in OperationErrors)
+                    {
+                        errorStackTrace += (errorStackTrace == "" ? "" : "\n\n") +
+                            String.Format("[{0}]\n", error) + operationError.ErrorStackTrace;
+                        error++;
+                    }
+
+                    return new ZOperationResultException(Text ?? "", errorStackTrace);
                 }
                 else
                 {
@@ -141,6 +150,28 @@ namespace EasyLOB
                         ErrorMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
                     result += br + string.Format(labelError, text.Trim());
                     br = "<br />";
+
+                    if (!string.IsNullOrEmpty(ErrorStackTrace))
+                    {
+                        string buttonId = "button" + button++.ToString();
+                        result += "&nbsp;" +
+                            string.Format("<button data-toggle=\"collapse\" data-target=\"#{0}\">...</button>", buttonId) +
+                            string.Format("<div id=\"{0}\" class=\"collapse\">", buttonId);
+
+                        result += ErrorStackTrace.Replace("\r\n", "<br />").Replace("\n", "<br />");
+                        //if (ErrorStackTrace.Contains(" at "))
+                        //{
+                        //    result += ErrorStackTrace.Replace(" at ", "<br />at ");
+                        //}
+                        //else
+                        //{
+                        //    result += ErrorStackTrace.Replace(" em ", "<br />em ");
+                        //}
+
+                        result += "</div>";
+
+                        br = "<br />";
+                    }
                 }
 
                 // Errors
@@ -548,6 +579,17 @@ namespace EasyLOB
         }
 
         /// <summary>
+        /// Throw Exception.
+        /// </summary>
+        public void ThrowException()
+        {
+            if (!Ok)
+            {
+                throw new Exception(Text);
+            }
+        }
+
+        /// <summary>
         /// Convert ZOperationResult to List[IZOperationMessage].
         /// </summary>
         /// <returns>List</returns>
@@ -581,6 +623,19 @@ namespace EasyLOB
                     (!string.IsNullOrEmpty(ErrorCode) ? "[ " + ErrorCode + " ] " : "") +
                     ErrorMessage;
                 result.Add(text.Trim());
+
+                if (!string.IsNullOrEmpty(ErrorStackTrace))
+                {
+                    result.Add(ErrorStackTrace);
+                    //if (ErrorStackTrace.Contains(" at "))
+                    //{
+                    //    result.Add(ErrorStackTrace.Replace(" at ", "\r\nat "));
+                    //}
+                    //else
+                    //{
+                    //    result.Add(ErrorStackTrace.Replace(" em ", "\r\nem "));
+                    //}
+                }
             }
 
             // Errors

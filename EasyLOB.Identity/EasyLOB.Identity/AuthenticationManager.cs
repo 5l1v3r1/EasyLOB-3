@@ -93,7 +93,7 @@ namespace EasyLOB.Identity
                 }
                 catch { }
 
-                return userName;
+                return userName ?? "";
             }
         }
 

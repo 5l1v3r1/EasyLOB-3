@@ -65,6 +65,8 @@ namespace EasyLOB.Security
             // Domain-Dashboard-DashboardName
             // Domain-Dashboard-DashboardDirectory-DashboardName
 
+            domain = ""; // !?!
+
             string activity = "";
 
             if (!string.IsNullOrEmpty(domain))
@@ -97,6 +99,8 @@ namespace EasyLOB.Security
         {
             // Domain-Entity
 
+            domain = ""; // !?!
+
             string activity = "";
 
             if (!string.IsNullOrEmpty(domain))
@@ -123,6 +127,8 @@ namespace EasyLOB.Security
         {
             // Domain-Report-ReportName
             // Domain-Report-ReportDirectory-ReportName
+
+            domain = ""; // !?!
 
             string activity = "";
 
@@ -155,6 +161,8 @@ namespace EasyLOB.Security
         public static string TaskActivity(string domain, string taskName)
         {
             // Domain-Task-TaskName
+
+            domain = ""; // !?!
 
             string activity = "";
 
