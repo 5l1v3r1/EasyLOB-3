@@ -40,7 +40,7 @@
         /// <summary>
         /// Before create Trigger.
         /// </summary>
-        /// <param name="operationResult">Operation Result</param>
+        /// <param name="operationResult">Operation result</param>
         /// <returns></returns>
         bool BeforeCreate(ZOperationResult operationResult);
 

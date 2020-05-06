@@ -21,26 +21,26 @@ namespace EasyLOB
         /// <summary>
         /// Get operations.
         /// </summary>
-        /// <param name="activity">Activity name</param>
+        /// <param name="activityName">Activity name</param>
         /// <returns></returns>
-        ZActivityOperations GetOperations(string activity);
+        ZActivityOperations GetOperations(string activityName);
 
         /// <summary>
         /// Is authorized ?
         /// </summary>
-        /// <param name="activity">Ativity name</param>
+        /// <param name="activityName">Ativity name</param>
         /// <param name="operation">Operation</param>
         /// <returns></returns>
-        bool IsAuthorized(string activity, ZOperations operation);
+        bool IsAuthorized(string activityName, ZOperations operation);
 
         /// <summary>
         /// Is authorized ?
         /// </summary>
-        /// <param name="activity">Activity name</param>
+        /// <param name="activityName">Activity name</param>
         /// <param name="operation">Operation</param>
         /// <param name="operationResult">Operation result</param>
         /// <returns></returns>
-        bool IsAuthorized(string activity, ZOperations operation, ZOperationResult operationResult);
+        bool IsAuthorized(string activityName, ZOperations operation, ZOperationResult operationResult);
 
         #endregion Methods
 
@@ -142,10 +142,10 @@ namespace EasyLOB
         /// Is task ?
         /// </summary>
         /// <param name="domain">Domain name</param>
-        /// <param name="task">Tak name</param>
+        /// <param name="taskName">Task name</param>
         /// <param name="operationResult">Operation result</param>
         /// <returns></returns>
-        bool IsTask(string domain, string task, ZOperationResult operationResult);
+        bool IsTask(string domain, string taskName, ZOperationResult operationResult);
 
         #endregion Methods IsOperation
 
@@ -154,18 +154,18 @@ namespace EasyLOB
         /// <summary>
         /// Message authorized.
         /// </summary>
-        /// <param name="activity">Activity name</param>
+        /// <param name="activityName">Activity name</param>
         /// <param name="operation">Operation</param>
         /// <returns></returns>
-        string MessageAuthorized(string activity, ZOperations operation);
+        string MessageAuthorized(string activityName, ZOperations operation);
 
         /// <summary>
         /// Message NOT authorized.
         /// </summary>
-        /// <param name="activity">Activity name</param>
+        /// <param name="activityName">Activity name</param>
         /// <param name="operation">Operation</param>
         /// <returns></returns>
-        string MessageNotAuthorized(string activity, ZOperations operation);
+        string MessageNotAuthorized(string activityName, ZOperations operation);
 
         #endregion Methods Message
     }

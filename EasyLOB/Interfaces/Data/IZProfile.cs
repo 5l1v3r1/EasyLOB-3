@@ -109,23 +109,16 @@ namespace EasyLOB
         /// <summary>
         /// Get profile property.
         /// </summary>
-        /// <param name="name">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        IZProfileProperty GetProfileProperty(string name);
-        /*
-        /// <summary>
-        /// Is required data model ?
-        /// </summary>
-        /// <param name="property">Property name</param>
-        /// <returns></returns>
-        bool IsRequiredData(string property);
-        */
+        IZProfileProperty GetProfileProperty(string propertyName);
+
         /// <summary>
         /// Is required view model ?
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        bool IsRequiredView(string property);
+        bool IsRequiredView(string propertyName);
 
         /// <summary>
         /// Set edit read-only.
@@ -154,14 +147,14 @@ namespace EasyLOB
         /// <summary>
         /// Set profile property.
         /// </summary>
-        /// <param name="name">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <param name="isGridVisible">Is grid visible ?</param>
         /// <param name="isGridSearch">Is grid search ?</param>
         /// <param name="gridWidth">Grid width</param>
         /// <param name="isEditVisible">Is edit visible ?</param>
         /// <param name="isEditReadOnly">Is edit read-only ?</param>
         /// <param name="editCSS">Edit CSS</param>
-        void SetProfileProperty(string name,
+        void SetProfileProperty(string propertyName,
             bool? isGridVisible = null,
             bool? isGridSearch = null,
             int? gridWidth = null,
@@ -176,9 +169,9 @@ namespace EasyLOB
         /// <summary>
         /// Edit CSS for property.
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        string EditCSSFor(string property);
+        string EditCSSFor(string propertyName);
 
         /// <summary>
         /// Edit CSS Editor.
@@ -190,9 +183,9 @@ namespace EasyLOB
         /// <summary>
         /// Edit CSS Editor for property.
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        string EditCSSEditorFor(string property);
+        string EditCSSEditorFor(string propertyName);
 
         /// <summary>
         /// Edit CSS Editor Date.
@@ -204,9 +197,9 @@ namespace EasyLOB
         /// <summary>
         /// Edit CSS Editor Date for property.
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        string EditCSSEditorDateFor(string property);
+        string EditCSSEditorDateFor(string propertyName);
 
         /// <summary>
         /// Edit CSS Editor DateTime.
@@ -218,9 +211,9 @@ namespace EasyLOB
         /// <summary>
         /// Edit CSS Editor DateTime for property.
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        string EditCSSEditorDateTimeFor(string property);
+        string EditCSSEditorDateTimeFor(string propertyName);
 
         /// <summary>
         /// Edit CSS Label.
@@ -232,9 +225,9 @@ namespace EasyLOB
         /// <summary>
         /// Edit CSS Label for property.
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        string EditCSSLabelFor(string property);
+        string EditCSSLabelFor(string propertyName);
 
         /// <summary>
         /// Edit CSS Lookup Editor.
@@ -257,16 +250,16 @@ namespace EasyLOB
         /// <summary>
         /// Is grid visible ?
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        bool IsGridVisibleFor(string property);
+        bool IsGridVisibleFor(string propertyName);
 
         /// <summary>
         /// Grid width.
         /// </summary>
-        /// <param name="property">Property name</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        int GridWidthFor(string property);
+        int GridWidthFor(string propertyName);
 
         #endregion Methods Helper Grid
     }

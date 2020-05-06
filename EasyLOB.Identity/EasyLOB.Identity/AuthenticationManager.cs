@@ -101,9 +101,9 @@ namespace EasyLOB.Identity
 
         #region Methods
 
-        public bool IsInRole(string role)
+        public bool IsInRole(string roleName)
         {
-            return Principal.IsInRole(role);
+            return Principal.IsInRole(roleName);
         }
 
         #endregion Methods

@@ -1,5 +1,4 @@
-﻿using EasyLOB.Extensions.Ini;
-using EasyLOB.Library;
+﻿using EasyLOB.Library;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,16 +7,31 @@ using System.Linq;
 
 namespace EasyLOB.Environment
 {
+    /// <summary>
+    /// Environment Helper.
+    /// </summary>
     public static class EnvironmentHelper
     {
         #region Properties
 
+        /// <summary>
+        /// EasyLOB-Configuration/DashboardResources.ini Manager.
+        /// </summary>
         private static IIniManager IniManagerDashboard { get; }
 
+        /// <summary>
+        /// EasyLOB-Configuration/MenuResources.ini Manager.
+        /// </summary>
         private static IIniManager IniManagerMenu { get; }
 
+        /// <summary>
+        /// EasyLOB-Configuration/ReportResources.ini Manager.
+        /// </summary>
         private static IIniManager IniManagerReport { get; }
 
+        /// <summary>
+        /// Resources namespaces.
+        /// </summary>
         private static List<string> Namespaces { get; }
 
         #endregion Properties
@@ -65,21 +79,42 @@ namespace EasyLOB.Environment
             }
         }
 
+        /// <summary>
+        /// Get Dashboard resources.
+        /// </summary>
+        /// <param name="resourceKey">Resource</param>
+        /// <returns></returns>
         public static string GetDashboardResource(string resourceKey)
         {
             return GetINIResource(IniManagerDashboard, resourceKey);
         }
 
+        /// <summary>
+        /// Get Menu resources.
+        /// </summary>
+        /// <param name="resourceKey">Resource</param>
+        /// <returns></returns>
         public static string GetMenuResource(string resourceKey)
         {
             return GetINIResource(IniManagerMenu, resourceKey);
         }
 
+        /// <summary>
+        /// Get Report resources.
+        /// </summary>
+        /// <param name="resourceKey">Resource</param>
+        /// <returns></returns>
         public static string GetReportResource(string resourceKey)
         {
             return GetINIResource(IniManagerReport, resourceKey);
         }
 
+        /// <summary>
+        /// Get INI resource.
+        /// </summary>
+        /// <param name="iniManager">INI manager</param>
+        /// <param name="resourceKey">Resource</param>
+        /// <returns></returns>
         private static string GetINIResource(IIniManager iniManager, string resourceKey)
         {
             string resourceValue = iniManager.Read(CultureInfo.CurrentCulture.Name, resourceKey);
@@ -97,6 +132,12 @@ namespace EasyLOB.Environment
             return resourceValue;
         }
 
+        /// <summary>
+        /// Get Class resource.
+        /// </summary>
+        /// <param name="resourceClass">Class</param>
+        /// <param name="resourceKey">Resource</param>
+        /// <returns></returns>
         public static string GetResource(string resourceClass, string resourceKey)
         {
             string result = "";

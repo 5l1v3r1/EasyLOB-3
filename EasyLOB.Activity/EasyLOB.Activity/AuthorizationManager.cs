@@ -28,7 +28,7 @@ namespace EasyLOB.Activity
             UnitOfWork = unitOfWork;
         }
 
-        protected IQueryable<ActivityRole> GetActivityRoles(string activity)
+        protected IQueryable<ActivityRole> GetActivityRoles(string activityName)
         {
             IQueryable<EasyLOB.Activity.Data.Activity> queryActivity = UnitOfWork.GetQuery<EasyLOB.Activity.Data.Activity>();
             IQueryable<ActivityRole> queryActivityRole = UnitOfWork.GetQuery<ActivityRole>();
@@ -46,7 +46,7 @@ namespace EasyLOB.Activity
                     //ActivityRole in UnitOfWork.GetQuery<EasyLOB.Activity.Data.ActivityRole>()
                     //ActivityRole in repositoryActivityRole.Query()
                 where
-                    Activity.Name == activity
+                    Activity.Name == activityName
                     && ActivityRole.ActivityId == Activity.Id
                     && AuthenticationManager.Roles.Contains(ActivityRole.RoleName)
                 select
@@ -55,10 +55,10 @@ namespace EasyLOB.Activity
             return activityRoles;
         }
 
-        public ZActivityOperations GetOperations(string activity)
+        public ZActivityOperations GetOperations(string activityName)
         {
             ZActivityOperations result = new ZActivityOperations();
-            result.Activity = activity;
+            result.Activity = activityName;
 
             if (AuthenticationManager.IsAdministrator)
             {
@@ -74,7 +74,7 @@ namespace EasyLOB.Activity
                 return result;
             }
 
-            if (!string.IsNullOrEmpty(activity))
+            if (!string.IsNullOrEmpty(activityName))
             {
                 string operationIndexAcronym = SecurityHelper.GetSecurityOperationAcronym(ZOperations.Index);
                 string operationSearchAcronym = SecurityHelper.GetSecurityOperationAcronym(ZOperations.Search);
@@ -89,7 +89,7 @@ namespace EasyLOB.Activity
                 IGenericRepository<EasyLOB.Activity.Data.Activity> repositoryActivity = UnitOfWork.GetRepository<EasyLOB.Activity.Data.Activity>();
                 IGenericRepository<UserRole> repositoryUserRole = UnitOfWork.GetRepository<UserRole>();
 
-                IQueryable<ActivityRole> queryActivityRole = GetActivityRoles(activity);
+                IQueryable<ActivityRole> queryActivityRole = GetActivityRoles(activityName);
                 List<ActivityRole> activityRoles = queryActivityRole.ToList();
                 foreach (ActivityRole activityRole in activityRoles)
                 {
@@ -109,7 +109,7 @@ namespace EasyLOB.Activity
             return result;
         }
 
-        public bool IsAuthorized(string activity, ZOperations operation)
+        public bool IsAuthorized(string activityName, ZOperations operation)
         {
             if (AuthenticationManager.IsAdministrator)
             {
@@ -118,7 +118,7 @@ namespace EasyLOB.Activity
 
             bool result = false;
 
-            if (!string.IsNullOrEmpty(activity))
+            if (!string.IsNullOrEmpty(activityName))
             {
                 string operationAcronym = SecurityHelper.GetSecurityOperationAcronym(operation);
 
@@ -126,7 +126,7 @@ namespace EasyLOB.Activity
                 IGenericRepository<EasyLOB.Activity.Data.Activity> repositoryActivity = UnitOfWork.GetRepository<EasyLOB.Activity.Data.Activity>();
                 IGenericRepository<UserRole> repositoryUserRole = UnitOfWork.GetRepository<UserRole>();
 
-                IQueryable<ActivityRole> queryActivityRole = GetActivityRoles(activity);
+                IQueryable<ActivityRole> queryActivityRole = GetActivityRoles(activityName);
                 List<ActivityRole> activityRoles = queryActivityRole.ToList();
                 foreach (ActivityRole activityRole in activityRoles)
                 {
@@ -141,13 +141,13 @@ namespace EasyLOB.Activity
             return result;
         }
 
-        public bool IsAuthorized(string activity, ZOperations operation, ZOperationResult operationResult)
+        public bool IsAuthorized(string activityName, ZOperations operation, ZOperationResult operationResult)
         {
-            bool result = IsAuthorized(activity, operation);
+            bool result = IsAuthorized(activityName, operation);
 
             if (!result)
             {
-                operationResult.WarningMessage = MessageNotAuthorized(activity, operation);
+                operationResult.WarningMessage = MessageNotAuthorized(activityName, operation);
             }
 
             return result;
@@ -324,26 +324,26 @@ namespace EasyLOB.Activity
 
         #region Methods Message
 
-        public string MessageAuthorized(string activity, ZOperations operation)
+        public string MessageAuthorized(string activityName, ZOperations operation)
         {
             return string.Format(SecurityActivityResources.ActivityOperationAuthorized,
-                activity,
+                activityName,
                 SecurityHelper.GetSecurityOperationName(operation),
                 AuthenticationManager.UserName);
         }
 
-        public string MessageNotAuthorized(string activity)
+        public string MessageNotAuthorized(string activityName)
         {
             return string.Format(SecurityActivityResources.ActivityOperationNotAuthorized,
-                activity,
+                activityName,
                 "*",
                 AuthenticationManager.UserName);
         }
 
-        public string MessageNotAuthorized(string activity, ZOperations operation)
+        public string MessageNotAuthorized(string activityName, ZOperations operation)
         {
             return string.Format(SecurityActivityResources.ActivityOperationNotAuthorized,
-                activity,
+                activityName,
                 SecurityHelper.GetSecurityOperationName(operation),
                 AuthenticationManager.UserName);
         }

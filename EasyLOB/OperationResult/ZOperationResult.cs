@@ -218,6 +218,7 @@ namespace EasyLOB
                 if (!string.IsNullOrEmpty(WarningCode) || !string.IsNullOrEmpty(WarningMessage))
                 {
                     string text =
+                        ErrorResources.Warning + ": " +
                         (!string.IsNullOrEmpty(WarningCode) ? "[ " + WarningCode + " ] " : "") +
                         WarningMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
                     result += br + string.Format(labelWarning, text.Trim());
@@ -246,6 +247,7 @@ namespace EasyLOB
                 if (!string.IsNullOrEmpty(InformationCode) || !string.IsNullOrEmpty(InformationMessage))
                 {
                     string text =
+                        ErrorResources.Information + ": " +
                         (!string.IsNullOrEmpty(InformationCode) ? "[ " + InformationCode + " ] " : "") +
                         InformationMessage.Replace("\r\n", "<br />").Replace("\n", "<br />");
                     result += br + string.Format(labelInformation, text.Trim());

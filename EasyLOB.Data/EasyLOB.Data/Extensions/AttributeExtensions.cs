@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace EasyLOB.Data
 {
+    /// <summary>
+    /// Attribute Extensions.
+    /// </summary>
     public static class AttributeExtensions
     {
         public static T GetAttributeFrom<T>(this object instance, string propertyName) where T : Attribute

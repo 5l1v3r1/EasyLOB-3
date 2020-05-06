@@ -25,7 +25,7 @@ namespace EasyLOB.Security
         {
         }
 
-        public bool IsInRole(string role)
+        public bool IsInRole(string roleName)
         {
             return true;
         }

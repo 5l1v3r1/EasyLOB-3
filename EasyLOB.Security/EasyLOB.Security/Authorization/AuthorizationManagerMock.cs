@@ -17,7 +17,7 @@
         {
         }
 
-        public ZActivityOperations GetOperations(string activity)
+        public ZActivityOperations GetOperations(string activityName)
         {
             ZActivityOperations activityOperations = new ZActivityOperations();
 
@@ -33,12 +33,12 @@
             return activityOperations;
         }
 
-        public bool IsAuthorized(string activity, ZOperations operation)
+        public bool IsAuthorized(string activityName, ZOperations operation)
         {
             return true;
         }
 
-        public bool IsAuthorized(string activity, ZOperations operation, ZOperationResult operationResult)
+        public bool IsAuthorized(string activityName, ZOperations operation, ZOperationResult operationResult)
         {
             return true;
         }
@@ -110,12 +110,12 @@
 
         #region Methods Message
 
-        public string MessageAuthorized(string activity, ZOperations operation)
+        public string MessageAuthorized(string activityName, ZOperations operation)
         {
             return "";
         }
 
-        public string MessageNotAuthorized(string activity, ZOperations operation)
+        public string MessageNotAuthorized(string activityName, ZOperations operation)
         {
             return "";
         }

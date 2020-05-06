@@ -7,6 +7,10 @@ using System.Linq.Expressions;
 
 namespace EasyLOB.Library
 {
+    /// <summary>
+    /// Lambda Helper.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public static partial class LambdaHelper<TEntity>
     {
         #region Methods

@@ -43,9 +43,9 @@ namespace EasyLOB
         /// <summary>
         /// Is in role.
         /// </summary>
-        /// <param name="role">Role name</param>
+        /// <param name="roleName">Role name</param>
         /// <returns></returns>
-        bool IsInRole(string role);
+        bool IsInRole(string roleName);
 
         #endregion Methods
     }

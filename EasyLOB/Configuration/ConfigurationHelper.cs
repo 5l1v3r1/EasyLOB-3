@@ -14,12 +14,12 @@ namespace EasyLOB
         /// <summary>
         /// Get AppSettings by setting name.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="name"></param>
+        /// <typeparam name="T">Type</typeparam>
+        /// <param name="settingName">Setting name</param>
         /// <returns></returns>
-        public static T AppSettings<T>(string name)
+        public static T AppSettings<T>(string settingName)
         {
-            var appSetting = ConfigurationManager.AppSettings[name];
+            var appSetting = ConfigurationManager.AppSettings[settingName];
             var converter = TypeDescriptor.GetConverter(typeof(T));
 
             return (T)(converter.ConvertFromInvariantString(appSetting ?? ""));
@@ -28,7 +28,7 @@ namespace EasyLOB
         /// <summary>
         /// Get ConnectionStrings by connection name.
         /// </summary>
-        /// <param name="connectionName"></param>
+        /// <param name="connectionName">Connection nanme</param>
         /// <returns></returns>
         public static string ConnectionStrings(string connectionName)
         {

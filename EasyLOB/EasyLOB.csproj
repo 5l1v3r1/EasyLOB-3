@@ -77,7 +77,6 @@
     <Compile Include="Interfaces\Persistence\IUnitOfWorkDTO.cs" />
     <Compile Include="Interfaces\Security\IAuthenticationManager.cs" />
     <Compile Include="Interfaces\Security\IAuthorizationManager.cs" />
-    <Compile Include="OperationResult\OperationResultModel.cs" />
     <Compile Include="OperationResult\ZOperationResultException.cs" />
     <Compile Include="OperationResult\ZOperationWarning.cs" />
     <Compile Include="OperationResult\ZOperationInformation.cs" />

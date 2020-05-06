@@ -65,13 +65,13 @@
         /// <summary>
         /// Clear session by name.
         /// </summary>
-        /// <param name="sessionName"></param>
+        /// <param name="sessionName">Session name</param>
         void SessionClear(string sessionName);
 
         /// <summary>
         /// Read session by name.
         /// </summary>
-        /// <param name="sessionName"></param>
+        /// <param name="sessionName">Session name</param>
         /// <returns></returns>
         object SessionRead(string sessionName);
 

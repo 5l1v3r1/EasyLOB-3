@@ -2181,11 +2181,11 @@ namespace EasyLOB.Library
         /// <summary>
         /// Get Assembly.
         /// </summary>
-        /// <param name="name">Assembly name</param>
+        /// <param name="assemblyName">Assembly name</param>
         /// <returns>Assembly</returns>
-        public static Assembly GetAssembly(string name)
+        public static Assembly GetAssembly(string assemblyName)
         {
-            return AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(assembly => assembly.GetName().Name == name);
+            return AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(assembly => assembly.GetName().Name == assemblyName);
         }
 
         #endregion Method Reflection
@@ -2420,7 +2420,7 @@ namespace EasyLOB.Library
         /// <summary>
         /// Get Field.
         /// </summary>
-        /// <param name="type">Type name</param>
+        /// <param name="type">Type</param>
         /// <param name="fieldName">Field name</param>
         /// <returns>Property</returns>
         public static FieldInfo GetField(Type type, string fieldName)
@@ -2465,7 +2465,7 @@ namespace EasyLOB.Library
         /// <summary>
         /// Has Field ?
         /// </summary>
-        /// <param name="type">Type name</param>
+        /// <param name="type">Type</param>
         /// <param name="fieldName">Field name</param>
         /// <returns></returns>
         public static bool HasField(Type type, string fieldName)
@@ -2499,7 +2499,7 @@ namespace EasyLOB.Library
         /// <summary>
         /// Get Property.
         /// </summary>
-        /// <param name="type">Type name</param>
+        /// <param name="type">Type</param>
         /// <param name="propertyName">Property name</param>
         /// <returns>Property</returns>
         public static PropertyInfo GetProperty(Type type, string propertyName)
@@ -2546,12 +2546,12 @@ namespace EasyLOB.Library
         /// <summary>
         /// Has Property ?
         /// </summary>
-        /// <param name="type">Type name</param>
-        /// <param name="PropertyName">Property name</param>
+        /// <param name="type">Type</param>
+        /// <param name="propertyName">Property name</param>
         /// <returns></returns>
-        public static bool HasProperty(Type type, string PropertyName)
+        public static bool HasProperty(Type type, string propertyName)
         {
-            return GetProperty(type, PropertyName) != null;
+            return GetProperty(type, propertyName) != null;
         }
 
         /// <summary>
@@ -2592,7 +2592,7 @@ namespace EasyLOB.Library
         /// <summary>
         /// Has Method ?
         /// </summary>
-        /// <param name="type">Type name</param>
+        /// <param name="type">Type</param>
         /// <param name="methodName">Method name</param>
         /// <returns></returns>
         public static bool HasMethod(Type type, string methodName)

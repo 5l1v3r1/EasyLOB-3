@@ -60,7 +60,7 @@ namespace EasyLOB
         void Exception(Exception exception, string message, params object[] args);
 
         /// <summary>
-        /// OperationResult.
+        /// Operation result.
         /// </summary>
         /// <param name="operationResult">Operation result</param>
         /// <param name="header">Header</param>

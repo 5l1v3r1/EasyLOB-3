@@ -231,17 +231,17 @@ namespace EasyLOB.Security
         }
 
         /// <summary>
-        /// Get operation from name.
+        /// Get operation by name.
         /// </summary>
-        /// <param name="name">Name</param>
+        /// <param name="operationName">Operation name</param>
         /// <returns></returns>
-        public static ZOperations GetSecurityOperationByName(string name)
+        public static ZOperations GetSecurityOperationByName(string operationName)
         {
             ZOperations result = ZOperations.None;
 
             try
             {
-                int index = Array.IndexOf(OperationNames, name);
+                int index = Array.IndexOf(OperationNames, operationName);
                 if (index > 0)
                 {
                     result = (ZOperations)index;
@@ -342,11 +342,11 @@ namespace EasyLOB.Security
         /// Get "Is Operation" from activity operations by name.
         /// </summary>
         /// <param name="activityOperations">Activity operations</param>
-        /// <param name="name">Name</param>
+        /// <param name="operationName">Operation name</param>
         /// <returns></returns>
-        public static bool GetIsSecurityOperationByName(ZActivityOperations activityOperations, string name)
+        public static bool GetIsSecurityOperationByName(ZActivityOperations activityOperations, string operationName)
         {
-            return GetIsSecurityOperation(activityOperations, SecurityHelper.GetSecurityOperationByAcronym(name));
+            return GetIsSecurityOperation(activityOperations, SecurityHelper.GetSecurityOperationByName(operationName));
         }
 
         #endregion Methods GetIsSecurityOperation

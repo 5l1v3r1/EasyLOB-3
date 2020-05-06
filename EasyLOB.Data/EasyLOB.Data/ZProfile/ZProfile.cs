@@ -187,18 +187,18 @@ namespace EasyLOB.Data
             Properties = new List<IZProfileProperty>();
         }
 
-        public IZProfileProperty GetProfileProperty(string name)
+        public IZProfileProperty GetProfileProperty(string propertyName)
         {
             return Properties
-                .Where(x => x.Name == name)
+                .Where(x => x.Name == propertyName)
                 .FirstOrDefault();
         }
 
-        public bool IsRequiredView(string name)
+        public bool IsRequiredView(string propertyName)
         {
             bool result = false;
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 result = profileProperty.IsRequiredView;
@@ -252,7 +252,7 @@ namespace EasyLOB.Data
             }
         }
 
-        public void SetProfileProperty(string name,
+        public void SetProfileProperty(string propertyName,
             bool? isGridVisible = null,
             bool? isGridSearch = null,
             int? gridWidth = null,
@@ -260,7 +260,7 @@ namespace EasyLOB.Data
             bool? isEditReadOnly = null,
             string editCSS = null)
         {
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 if (isGridVisible != null)
@@ -299,11 +299,11 @@ namespace EasyLOB.Data
 
         #region Methods Edit
 
-        public string EditCSSFor(string name)
+        public string EditCSSFor(string propertyName)
         {
             string result = "form-group z-group";
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 result += " " + profileProperty.EditCSS;
@@ -328,11 +328,11 @@ namespace EasyLOB.Data
             return result;
         }
 
-        public string EditCSSEditorFor(string name)
+        public string EditCSSEditorFor(string propertyName)
         {
             string result = "form-control input-sm";
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 if (profileProperty.IsRequiredView)
@@ -364,11 +364,11 @@ namespace EasyLOB.Data
             return result;
         }
 
-        public string EditCSSEditorDateFor(string name)
+        public string EditCSSEditorDateFor(string propertyName)
         {
             string result = "";
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 if (profileProperty.IsRequiredView)
@@ -400,11 +400,11 @@ namespace EasyLOB.Data
             return result;
         }
 
-        public string EditCSSEditorDateTimeFor(string name)
+        public string EditCSSEditorDateTimeFor(string propertyName)
         {
             string result = "";
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 if (profileProperty.IsRequiredView)
@@ -436,11 +436,11 @@ namespace EasyLOB.Data
             return result;
         }
 
-        public string EditCSSLabelFor(string name)
+        public string EditCSSLabelFor(string propertyName)
         {
             string result = "control-label";
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 if (profileProperty.IsRequiredView)
@@ -492,11 +492,11 @@ namespace EasyLOB.Data
 
         #region Methods Grid
 
-        public bool IsGridVisibleFor(string name)
+        public bool IsGridVisibleFor(string propertyName)
         {
             bool result = false;
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 result = profileProperty.IsGridVisible;
@@ -505,11 +505,11 @@ namespace EasyLOB.Data
             return result;
         }
 
-        public int GridWidthFor(string name)
+        public int GridWidthFor(string propertyName)
         {
             int result = 100;
 
-            IZProfileProperty profileProperty = GetProfileProperty(name);
+            IZProfileProperty profileProperty = GetProfileProperty(propertyName);
             if (profileProperty != null)
             {
                 result = profileProperty.GridWidth;
